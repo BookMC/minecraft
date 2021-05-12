@@ -1,0 +1,40 @@
+allprojects {
+    apply plugin: "java"
+
+    sourceCompatibility = targetCompatibility = 1.8
+    compileJava.options.encoding = "UTF-8"
+
+    version = "0.0.1"
+    group = "org.bookmc"
+
+    repositories {
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+    }
+
+    configurations {
+        embed
+        implementation.extendsFrom(embed)
+    }
+
+    processResources {
+        inputs.files "src/main/resources"
+        outputs.dir "build/classes/main"
+        copy {
+            from("src/main/resources")
+            into("build/classes/main")
+        }
+    }
+
+    jar {
+        from {
+            configurations.embed.collect {
+                it.isDirectory() ? it : zipTree(it)
+            }
+        }
+
+        duplicatesStrategy DuplicatesStrategy.EXCLUDE
+
+        exclude "META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA"
+    }
+}
