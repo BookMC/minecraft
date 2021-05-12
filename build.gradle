@@ -8,8 +8,23 @@ allprojects {
     group = "org.bookmc"
 
     repositories {
-        maven { url "https://jitpack.io" }
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://libraries.minecraft.net/"
+        }
         mavenCentral()
+    }
+
+    dependencies {
+        implementation "com.github.BookMC:services:61152c01b9"
+        implementation "com.github.BookMC:modding:06e04ba8cc"
+
+        implementation("com.github.BookMC:loader:3477c583dc") {
+            exclude module: "log4j-core"
+            exclude module: "log4j-api"
+        }
     }
 
     configurations {

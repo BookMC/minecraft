@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "org.bookmc.client.mixin",
+  "refmap": "mixin.bookmc-client.refmap.json",
+  "verbose": true,
+  "mixins": [
+    "client.MixinMinecraft"
+  ]
+}
