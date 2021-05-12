@@ -7,9 +7,11 @@ import org.bookmc.loader.BookModLoader;
 import org.bookmc.loader.Loader;
 import org.bookmc.loader.MinecraftModDiscoverer;
 import org.bookmc.loader.book.DevelopmentModDiscoverer;
+import org.bookmc.loader.vessel.ModVessel;
 import org.lwjgl.opengl.Display;
 
 import java.io.File;
+import java.util.List;
 
 public class MinecraftClient {
     private final Logger logger = LogManager.getLogger();
@@ -30,7 +32,15 @@ public class MinecraftClient {
     }
 
     public void load() {
-        logger.info("Starting BookMC with {} mods", Loader.getModVessels().size());
+        StringBuilder mods = new StringBuilder();
+        List<ModVessel> vesselList = Loader.getModVessels();
+        for (ModVessel vessel : vesselList) {
+            mods.append(vessel.getName());
+            if (vesselList.indexOf(vessel) + 1 != vesselList.size()) {
+                mods.append(", ");
+            }
+        }
+        logger.info("Starting BookMC with {} mods. Mods: {}", Loader.getModVessels().size(), mods.toString());
         BookModLoader.load();
         Display.setTitle(String.format("Minecraft %s (BookMC)", Minecraft.getMinecraft().getVersion()));
     }

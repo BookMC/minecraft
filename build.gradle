@@ -21,7 +21,7 @@ allprojects {
         implementation "com.github.BookMC:services:61152c01b9"
         implementation "com.github.BookMC:modding:ead53e23e5"
 
-        implementation("com.github.BookMC:loader:3477c583dc") {
+        implementation("com.github.BookMC:loader:45f51376ee") {
             exclude module: "log4j-core"
             exclude module: "log4j-api"
         }

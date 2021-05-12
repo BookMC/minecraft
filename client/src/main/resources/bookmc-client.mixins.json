@@ -3,8 +3,10 @@
   "compatibilityLevel": "JAVA_8",
   "package": "org.bookmc.client.mixin",
   "refmap": "mixin.bookmc-client.refmap.json",
+  "minVersion": "0.7.11",
   "verbose": true,
   "mixins": [
-    "client.MixinMinecraft"
+    "client.MixinMinecraft",
+    "client.gui.MixinGuiMainMenu"
   ]
 }
