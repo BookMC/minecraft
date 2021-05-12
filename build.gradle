@@ -19,7 +19,7 @@ allprojects {
 
     dependencies {
         implementation "com.github.BookMC:services:61152c01b9"
-        implementation "com.github.BookMC:modding:06e04ba8cc"
+        implementation "com.github.BookMC:modding:ead53e23e5"
 
         implementation("com.github.BookMC:loader:3477c583dc") {
             exclude module: "log4j-core"

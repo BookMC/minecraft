@@ -1,0 +1,8 @@
+[
+  {
+    "name": "TestMod",
+    "author": "ChachyDev",
+    "version": "0.0.1",
+    "entrypoint": "org.bookmc.mod.ModTest::start"
+  }
+]

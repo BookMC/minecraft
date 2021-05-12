@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.bookmc.loader.BookModLoader;
 import org.bookmc.loader.Loader;
 import org.bookmc.loader.MinecraftModDiscoverer;
+import org.bookmc.loader.book.DevelopmentModDiscoverer;
 import org.lwjgl.opengl.Display;
 
 import java.io.File;
@@ -18,10 +19,11 @@ public class MinecraftClient {
     private final File modsFolder = new File("mods");
 
     public void preload() {
+        logger.info("Preloading BookMC!");
         // Discover mods at preload
         for (MinecraftModDiscoverer loader : Loader.getModDiscoverers()) {
             File[] mods = modsFolder.listFiles();
-            if (mods != null) {
+            if (mods != null || loader instanceof DevelopmentModDiscoverer) {
                 loader.discover(mods);
             }
         }
