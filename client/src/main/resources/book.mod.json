@@ -4,5 +4,11 @@
     "author": "ChachyDev",
     "version": "0.0.1",
     "entrypoint": "org.bookmc.mod.ModTest::start"
+  },
+  {
+    "name": "TestMod-Additions",
+    "author": "ChachyDev",
+    "version": "0.0.1",
+    "entrypoint": "org.bookmc.mod.ModTest::anotherStart"
   }
 ]
