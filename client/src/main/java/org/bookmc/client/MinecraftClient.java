@@ -3,17 +3,12 @@ package org.bookmc.client;
 import net.minecraft.client.Minecraft;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bookmc.loader.BookModLoader;
-import org.bookmc.loader.Loader;
-import org.bookmc.loader.MinecraftModDiscoverer;
-import org.bookmc.loader.book.DevelopmentModDiscoverer;
-import org.bookmc.loader.vessel.ModVessel;
+import org.bookmc.common.MinecraftCommon;
 import org.lwjgl.opengl.Display;
 
 import java.io.File;
-import java.util.List;
 
-public class MinecraftClient {
+public class MinecraftClient extends MinecraftCommon {
     private final Logger logger = LogManager.getLogger();
 
     public static MinecraftClient INSTANCE = new MinecraftClient();
@@ -24,17 +19,10 @@ public class MinecraftClient {
         logger.info("Preloading BookMC!");
     }
 
+
+    @Override
     public void load() {
-        StringBuilder mods = new StringBuilder();
-        List<ModVessel> vesselList = Loader.getModVessels();
-        for (ModVessel vessel : vesselList) {
-            mods.append(vessel.getName());
-            if (vesselList.indexOf(vessel) + 1 != vesselList.size()) {
-                mods.append(", ");
-            }
-        }
-        logger.info("Starting BookMC with {} mod(s). Mods: {}", Loader.getModVessels().size(), mods.toString());
-        BookModLoader.load();
+        super.load();
         Display.setTitle(String.format("Minecraft %s (BookMC)", Minecraft.getMinecraft().getVersion()));
     }
 

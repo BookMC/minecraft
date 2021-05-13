@@ -16,7 +16,7 @@ buildscript {
     }
 }
 
-apply plugin: "net.minecraftforge.gradle.tweaker-client"
+apply plugin: "net.minecraftforge.gradle.tweaker-server"
 apply plugin: "org.spongepowered.mixin"
 
 minecraft {

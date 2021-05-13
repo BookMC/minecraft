@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "org.bookmc.server.mixin",
+  "refmap": "mixin.bookmc-server.refmap.json",
+  "minVersion": "0.7.11",
+  "verbose": true,
+  "mixins": [
+    "server.dedicated.MixinDedicatedServer"
+  ]
+}
