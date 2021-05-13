@@ -22,13 +22,6 @@ public class MinecraftClient {
 
     public void preload() {
         logger.info("Preloading BookMC!");
-        // Discover mods at preload
-        for (MinecraftModDiscoverer loader : Loader.getModDiscoverers()) {
-            File[] mods = modsFolder.listFiles();
-            if (mods != null || loader instanceof DevelopmentModDiscoverer) {
-                loader.discover(mods);
-            }
-        }
     }
 
     public void load() {

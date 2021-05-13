@@ -5,8 +5,8 @@ public class ModTest {
 
     {
         try {
-            //noinspection ConstantConditions
-            isDevelopmentEnvironment = Class.forName("net.minecraft.client.Minecraft") != null;
+            Class.forName("net.minecraft.client.Minecraft");
+            isDevelopmentEnvironment = true;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
