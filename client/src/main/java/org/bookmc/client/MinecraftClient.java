@@ -33,7 +33,7 @@ public class MinecraftClient {
                 mods.append(", ");
             }
         }
-        logger.info("Starting BookMC with {} mods. Mods: {}", Loader.getModVessels().size(), mods.toString());
+        logger.info("Starting BookMC with {} mod(s). Mods: {}", Loader.getModVessels().size(), mods.toString());
         BookModLoader.load();
         Display.setTitle(String.format("Minecraft %s (BookMC)", Minecraft.getMinecraft().getVersion()));
     }
