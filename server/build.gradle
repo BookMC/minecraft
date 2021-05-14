@@ -21,7 +21,7 @@ apply plugin: "org.spongepowered.mixin"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "org.bookmc.loader.BookMCLoader"
+    tweakClass = "org.bookmc.loader.server.BookMCServerLoader"
     mappings = "stable_22"
     runDir = "run"
     makeObfSourceJar = false

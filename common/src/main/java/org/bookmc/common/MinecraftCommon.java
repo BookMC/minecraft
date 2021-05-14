@@ -20,7 +20,14 @@ public abstract class MinecraftCommon {
                 mods.append(", ");
             }
         }
-        logger.info("Starting BookMC with {} mod(s). Mods: {}", Loader.getModVessels().size(), mods.toString());
+
+        int modCount = Loader.getModVessels().size();
+
+        if (modCount == 0) {
+            logger.info("Starting BookMC with {} mod(s).", modCount);
+        } else {
+            logger.info("Starting BookMC with {} mod(s). Mods: {}", Loader.getModVessels().size(), mods.toString());
+        }
         BookModLoader.load();
     }
 }

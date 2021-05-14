@@ -19,12 +19,12 @@ allprojects {
 
     dependencies {
         implementation "com.github.BookMC:services:61152c01b9"
-        implementation "com.github.BookMC:modding:dac049384b"
-
-        implementation("com.github.BookMC:loader:73f592fcbe") {
-            exclude module: "log4j-core"
+        implementation("com.github.BookMC:modding:dac049384b") {
             exclude module: "log4j-api"
+            exclude module: "log4j-core"
         }
+
+        implementation"com.github.BookMC:loader:82400b61b6"
     }
 
     configurations {
