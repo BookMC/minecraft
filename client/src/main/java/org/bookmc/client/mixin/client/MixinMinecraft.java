@@ -9,13 +9,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
 public class MixinMinecraft {
-    @Inject(method = "startGame", at = @At("HEAD"))
+    @Inject(method = "startGame", at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/client/Minecraft;checkGLError(Ljava/lang/String;)V", args = "ldc=Pre startup", shift = At.Shift.AFTER))
     private void startGameHead(CallbackInfo ci) {
         MinecraftClient.INSTANCE.preload();
     }
 
-    @Inject(method = "startGame", at = @At("RETURN"))
-    private void startGameReturn(CallbackInfo ci) {
+    @Inject(method = "startGame", at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/client/Minecraft;checkGLError(Ljava/lang/String;)V", args = "ldc=Startup", shift = At.Shift.AFTER))
+    private void startGame(CallbackInfo ci) {
         MinecraftClient.INSTANCE.load();
     }
 }
