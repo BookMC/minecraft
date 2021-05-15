@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 public class MixinClientBrandRetriever {
     /**
      * @author ChachyDev/BookMC
+     * @reason We aren't vanilla.
      */
     @Overwrite
     public static String getClientModName() {

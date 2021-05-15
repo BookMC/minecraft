@@ -41,7 +41,10 @@ dependencies {
         exclude module: "launchwrapper"
         exclude module: "log4j-core"
     }
-    embed(project(":common"))
+
+    embed(project(":common")) {
+        exclude module: "launchwrapper"
+    }
 }
 
 jar {

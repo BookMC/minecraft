@@ -19,12 +19,11 @@ allprojects {
 
     dependencies {
         implementation "com.github.BookMC:services:61152c01b9"
-        implementation("com.github.BookMC:modding:c03f14153c") {
+        implementation("com.github.BookMC:modding:db7e06da52") {
             exclude module: "log4j-api"
             exclude module: "log4j-core"
         }
-
-        implementation"com.github.BookMC:loader:82400b61b6"
+        implementation "com.github.BookMC:loader:48b955956c"
     }
 
     configurations {
@@ -50,6 +49,6 @@ allprojects {
 
         duplicatesStrategy DuplicatesStrategy.EXCLUDE
 
-        exclude "META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA"
+        exclude "META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA", "module-info.class"
     }
 }

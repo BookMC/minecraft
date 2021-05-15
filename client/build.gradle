@@ -31,6 +31,9 @@ repositories {
     maven {
         url "https://repo.spongepowered.org/repository/maven-public/"
     }
+    maven {
+        url "https://repo.spongepowered.org/repository/maven-public/"
+    }
 }
 
 dependencies {
@@ -41,11 +44,22 @@ dependencies {
         exclude module: "launchwrapper"
         exclude module: "log4j-core"
     }
-    embed(project(":common"))
+    embed(project(":common")) {
+        exclude module: "launchwrapper"
+    }
+
+    annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT")
+}
+
+mixin {
+    // Specify "notch" or "searge" here
+    defaultObfuscationEnv notch
+    add sourceSets.main, "mixin.bookmc-client.refmap.json"
 }
 
 jar {
     manifest.attributes(
+        "MixinConfigs": 'bookmc-client.mixins.json',
         "TweakClass": "org.bookmc.loader.BookMCLoader",
         "TweakOrder": 0,
         "Manifest-Version": 1.0
