@@ -5,7 +5,7 @@
   "refmap": "mixin.bookmc-client.refmap.json",
   "minVersion": "0.7.11",
   "verbose": true,
-  "mixins": [
+  "client": [
     "client.MixinClientBrandRetriever",
     "client.MixinMinecraft",
     "client.gui.MixinGuiMainMenu"

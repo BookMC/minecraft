@@ -23,7 +23,7 @@ allprojects {
             exclude module: "log4j-api"
             exclude module: "log4j-core"
         }
-        implementation "com.github.BookMC:loader:48b955956c"
+        implementation "com.github.BookMC:loader:6ae3ea56c3"
     }
 
     configurations {
