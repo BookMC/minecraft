@@ -24,11 +24,7 @@ allprojects {
 
     dependencies {
         compileOnly "com.github.BookMC:services:61152c01b9"
-        compileOnly("com.github.BookMC:modding:db7e06da52") {
-            exclude module: "log4j-api"
-            exclude module: "log4j-core"
-        }
-        compileOnly "com.github.BookMC:loader:a27843e880"
+        compileOnly "com.github.BookMC:loader:a912dd3b15"
     }
 
     processResources {
