@@ -57,12 +57,7 @@ mixin {
 }
 
 jar {
-    manifest.attributes(
-        "MixinConfigs": 'bookmc-client.mixins.json',
-        "TweakClass": "org.bookmc.loader.BookMCLoader",
-        "TweakOrder": 0,
-        "Manifest-Version": 1.0
-    )
+    manifest.attributes("MixinConfigs": "bookmc-client.mixins.json")
 
     configurations.embed.each { dep ->
         from(project.zipTree(dep)) {
