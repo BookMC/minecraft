@@ -24,6 +24,7 @@ minecraft {
     tweakClass = "org.bookmc.loader.BookMCLoader"
     mappings = "stable_22"
     runDir = "run"
+    makeObfSourceJar = false
 }
 
 repositories {
