@@ -21,9 +21,10 @@ apply plugin: "org.spongepowered.mixin"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "org.bookmc.loader.BookMCLoader"
+    tweakClass = "org.bookmc.loader.BookMCClientLoader"
     mappings = "stable_22"
     runDir = "run"
+
     makeObfSourceJar = false
 }
 
@@ -67,3 +68,5 @@ jar {
         }
     }
 }
+
+tasks.jar.finalizedBy(tasks.reobfJar)
