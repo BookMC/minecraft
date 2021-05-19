@@ -45,9 +45,7 @@ dependencies {
         exclude module: "launchwrapper"
         exclude module: "log4j-core"
     }
-    embed(project(":common")) {
-        exclude module: "launchwrapper"
-    }
+    embed(project(":common"))
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT")
 }
