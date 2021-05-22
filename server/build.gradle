@@ -35,10 +35,8 @@ repositories {
 }
 
 dependencies {
-    api("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
-        exclude module: "guava"
+    api("org.spongepowered:mixin:0.8.3-SNAPSHOT") {
         exclude module: "commons-io"
-        exclude module: "gson"
         exclude module: "launchwrapper"
         exclude module: "log4j-core"
     }
@@ -46,7 +44,7 @@ dependencies {
 
     embed(project(":common"))
 
-    annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+    annotationProcessor("org.spongepowered:mixin:0.8.3-SNAPSHOT:processor") {
         exclude module: "commons-io"
         exclude module: "launchwrapper"
         exclude module: "log4j-core"
