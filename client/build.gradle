@@ -21,7 +21,7 @@ apply plugin: "org.spongepowered.mixin"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "org.bookmc.tweaker.client.BookMCClientLoader"
+    tweakClass = "org.bookmc.loader.BookMCClientLoader"
     mappings = "stable_22"
     runDir = "run"
 
@@ -41,12 +41,6 @@ dependencies {
         exclude module: "log4j-core"
     }
     embed(project(":common"))
-
-    compileOnly "org.ow2.asm:asm-tree:9.1"
-    compileOnly "org.ow2.asm:asm-commons:9.1"
-    compileOnly "org.ow2.asm:asm-util:9.1"
-
-    compileOnly "com.google.guava:guava:21.0"
 
     annotationProcessor("org.spongepowered:mixin:0.8.3-SNAPSHOT:processor") {
         exclude module: "commons-io"
