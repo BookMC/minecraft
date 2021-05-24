@@ -12,6 +12,7 @@ allprojects {
             url "https://jitpack.io"
         }
         mavenCentral()
+        mavenLocal()
     }
 
     configurations {
@@ -21,8 +22,9 @@ allprojects {
 
     dependencies {
         compileOnly "com.github.BookMC:services:293f5877c7"
-        compileOnly "com.github.BookMC:tweaker:d447428f93"
-        compileOnly "com.github.BookMC:loader:1ad7c87ddb"
+        compileOnly "com.github.BookMC:tweaker:42ed3ab6ae"
+        compileOnly "net.bytebuddy:byte-buddy-agent:+"
+        compileOnly "com.github.BookMC:loader:9ecd1c2845"
     }
 
     processResources {
