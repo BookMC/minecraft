@@ -22,8 +22,7 @@ allprojects {
 
     dependencies {
         compileOnly "com.github.BookMC:services:293f5877c7"
-        compileOnly "com.github.BookMC:tweaker:42ed3ab6ae"
-        compileOnly "net.bytebuddy:byte-buddy-agent:+"
+        compileOnly "com.github.BookMC:tweaker:379a1b7c2f"
         compileOnly "com.github.BookMC:loader:9ecd1c2845"
     }
 
