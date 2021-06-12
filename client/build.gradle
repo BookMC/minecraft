@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    include("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+    embed("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         exclude module: "guava"
         exclude module: "commons-io"
         exclude module: "gson"
@@ -44,7 +44,7 @@ dependencies {
         exclude module: "log4j-core"
     }
     
-    include(project(":common"))
+    embed(project(":common"))
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         exclude module: "commons-io"
@@ -62,7 +62,7 @@ mixin {
 jar {
     manifest.attributes("MixinConfigs": "bookmc-client.mixins.json")
 
-    configurations.include.each { dep ->
+    configurations.embed.each { dep ->
         from(project.zipTree(dep)) {
             exclude "META-INF", "META-INF/**"
             exclude "org/jetbrains/annotations", "org/jetbrains/annotations/**"

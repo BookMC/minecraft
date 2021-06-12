@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    include("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+    embed("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         exclude module: "guava"
         exclude module: "commons-io"
         exclude module: "gson"
@@ -44,7 +44,7 @@ dependencies {
     }
 
 
-    include(project(":common"))
+    embed(project(":common"))
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         exclude module: "commons-io"
@@ -60,7 +60,7 @@ jar {
         "Manifest-Version": 1.0
     )
 
-    configurations.include.each { dep ->
+    configurations.embed.each { dep ->
         from(project.zipTree(dep)) {
             exclude "META-INF", "META-INF/**"
             exclude "org/jetbrains/annotations", "org/jetbrains/annotations/**"

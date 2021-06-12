@@ -1,6 +1,5 @@
 allprojects {
     apply plugin: "java"
-    apply plugin: "java-library"
 
     sourceCompatibility = targetCompatibility = 1.8
     compileJava.options.encoding = "UTF-8"
@@ -17,16 +16,14 @@ allprojects {
     }
 
     configurations {
-        include
-        implementation.extendsFrom(include)
+        embed
+        implementation.extendsFrom(embed)
     }
 
     dependencies {
         compileOnly "com.github.BookMC:services:293f5877c7"
-        compileOnly "com.github.BookMC:tweaker:123b4ec891"
+        compileOnly "com.github.BookMC:tweaker:379a1b7c2f"
         compileOnly "com.github.BookMC:loader:cf4eaeff3f"
-
-        api "com.github.BookMC:LegacyLauncher:2cbe27165a"
     }
 
     processResources {
@@ -40,7 +37,7 @@ allprojects {
 
     jar {
         from {
-            configurations.include.collect {
+            configurations.embed.collect {
                 it.isDirectory() ? it : zipTree(it)
             }
         }
