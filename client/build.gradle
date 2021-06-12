@@ -55,7 +55,7 @@ dependencies {
 
 mixin {
     // Specify "notch" or "searge" here
-    defaultObfuscationEnv searge
+    defaultObfuscationEnv notch
     add sourceSets.main, "mixin.bookmc-client.refmap.json"
 }
 
