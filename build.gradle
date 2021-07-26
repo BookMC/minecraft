@@ -25,7 +25,7 @@ allprojects {
     }
 
     dependencies {
-        compileOnly "com.github.BookMC:loader:b143da418e"
+        compileOnly "com.github.BookMC:loader:6d9d2b5b43"
     }
 
     processResources {
