@@ -2,9 +2,9 @@ package org.bookmc.common;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bookmc.loader.BookModLoader;
-import org.bookmc.loader.Loader;
-import org.bookmc.loader.vessel.ModVessel;
+import org.bookmc.loader.api.vessel.ModVessel;
+import org.bookmc.loader.impl.BookModLoader;
+import org.bookmc.loader.impl.Loader;
 
 import java.util.List;
 
