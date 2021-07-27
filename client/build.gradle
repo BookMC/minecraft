@@ -63,4 +63,6 @@ jar {
     manifest.attributes("MixinConfigs": "bookmc-client.mixins.json")
 }
 
+tasks.build.dependsOn(shadowJar)
+
 tasks.shadowJar.finalizedBy(tasks.reobfJar)
