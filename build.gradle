@@ -1,10 +1,5 @@
-plugins {
-    id "com.github.johnrengelman.shadow" version "6.1.0" apply false
-}
-
 allprojects {
     apply plugin: "java"
-    apply plugin: "com.github.johnrengelman.shadow"
 
     sourceCompatibility = targetCompatibility = 1.8
     compileJava.options.encoding = "UTF-8"
@@ -37,11 +32,14 @@ allprojects {
         }
     }
 
-    shadowJar {
-        configurations = [project.configurations.include]
-        duplicatesStrategy DuplicatesStrategy.EXCLUDE
-        archiveClassifier.set("")
+    jar {
+        from {
+            configurations.include.collect {
+                it.isDirectory() ? it : zipTree(it)
+            }
+        }
 
+        duplicatesStrategy DuplicatesStrategy.EXCLUDE
         exclude "module-info.class"
     }
 }

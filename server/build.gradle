@@ -59,5 +59,3 @@ jar {
         "Manifest-Version": 1.0
     )
 }
-
-tasks.build.dependsOn(shadowJar)
