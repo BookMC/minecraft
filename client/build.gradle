@@ -61,8 +61,6 @@ mixin {
 
 jar {
     manifest.attributes("MixinConfigs": "bookmc-client.mixins.json")
-
-    enabled = false
 }
 
 tasks.shadowJar.finalizedBy(tasks.reobfJar)

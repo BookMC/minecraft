@@ -58,6 +58,4 @@ jar {
         "TweakOrder": 0,
         "Manifest-Version": 1.0
     )
-
-    enabled = false
 }
