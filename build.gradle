@@ -42,6 +42,6 @@ allprojects {
         duplicatesStrategy DuplicatesStrategy.EXCLUDE
         archiveClassifier.set("")
 
-        exclude "META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA", "module-info.class"
+        exclude "module-info.class"
     }
 }

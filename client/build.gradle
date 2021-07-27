@@ -62,12 +62,7 @@ mixin {
 jar {
     manifest.attributes("MixinConfigs": "bookmc-client.mixins.json")
 
-    configurations.include.each { dep ->
-        from(project.zipTree(dep)) {
-            exclude "META-INF", "META-INF/**"
-            exclude "org/jetbrains/annotations", "org/jetbrains/annotations/**"
-        }
-    }
+    enabled = false
 }
 
-tasks.jar.finalizedBy(tasks.reobfJar)
+tasks.shadowJar.finalizedBy(tasks.reobfJar)

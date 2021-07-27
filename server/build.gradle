@@ -43,7 +43,6 @@ dependencies {
         exclude module: "log4j-core"
     }
 
-
     include(project(":common"))
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
@@ -60,10 +59,5 @@ jar {
         "Manifest-Version": 1.0
     )
 
-    configurations.include.each { dep ->
-        from(project.zipTree(dep)) {
-            exclude "META-INF", "META-INF/**"
-            exclude "org/jetbrains/annotations", "org/jetbrains/annotations/**"
-        }
-    }
+    enabled = false
 }
