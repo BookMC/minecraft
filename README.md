@@ -1,2 +1,2 @@
 # minecraft
-The repository where the magic happens :)
+Hooks directly into Minecraft to kick-start the book-loader loading process.
