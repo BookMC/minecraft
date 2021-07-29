@@ -55,11 +55,11 @@ dependencies {
 mixin {
     // Specify "notch" or "searge" here
     defaultObfuscationEnv notch
-    add sourceSets.main, "mixin.bookmc-client.refmap.json"
+    add sourceSets.main, "mixin.book.refmap.json"
 }
 
 jar {
-    manifest.attributes("MixinConfigs": "bookmc-client.mixins.json")
+    manifest.attributes("MixinConfigs": "book.mixin.json")
 }
 
 tasks.jar.finalizedBy(tasks.reobfJar)

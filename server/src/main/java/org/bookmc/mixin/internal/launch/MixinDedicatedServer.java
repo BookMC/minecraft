@@ -1,4 +1,4 @@
-package org.bookmc.server.mixin.server.dedicated;
+package org.bookmc.mixin.internal.launch;
 
 import net.minecraft.server.dedicated.DedicatedServer;
 import org.bookmc.server.BookMinecraftServer;

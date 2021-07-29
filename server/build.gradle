@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
         maven {
             name = "forge"
-            url = "https://files.minecraftforge.net/maven"
+            url = "https://maven.minecraftforge.net"
         }
         maven {
             url "https://jitpack.io"
@@ -22,7 +22,7 @@ apply plugin: "java-library"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "org.bookmc.loader.impl.tweaker.BookMCClientLoader"
+    tweakClass = "org.bookmc.loader.impl.tweaker.BookMCServerLoader"
     mappings = "stable_22"
     runDir = "run"
     makeObfSourceJar = false
@@ -54,7 +54,7 @@ dependencies {
 
 jar {
     manifest.attributes(
-        "TweakClass": "org.bookmc.tweaker.server.BookMCServerLoader",
+        "TweakClass": "org.bookmc.loader.impl.tweaker.BookMCServerLoader",
         "TweakOrder": 0,
         "Manifest-Version": 1.0
     )

@@ -1,4 +1,4 @@
-package org.bookmc.client.mixin.client.gui;
+package org.bookmc.mixin.branding;
 
 import net.minecraft.client.gui.GuiMainMenu;
 import org.spongepowered.asm.mixin.Mixin;

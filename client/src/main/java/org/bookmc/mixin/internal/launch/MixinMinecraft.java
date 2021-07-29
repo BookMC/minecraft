@@ -1,4 +1,4 @@
-package org.bookmc.client.mixin.client;
+package org.bookmc.mixin.internal.launch;
 
 import net.minecraft.client.Minecraft;
 import org.bookmc.client.MinecraftClient;

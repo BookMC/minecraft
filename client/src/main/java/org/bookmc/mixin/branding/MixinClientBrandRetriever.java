@@ -1,4 +1,4 @@
-package org.bookmc.client.mixin.client;
+package org.bookmc.mixin.branding;
 
 import net.minecraft.client.ClientBrandRetriever;
 import org.spongepowered.asm.mixin.Mixin;

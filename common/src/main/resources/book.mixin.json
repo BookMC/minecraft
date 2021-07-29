@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "org.bookmc.mixin",
+  "refmap": "mixin.book.refmap.json",
+  "minVersion": "0.7.11",
+  "verbose": true,
+  "server": [
+    "internal.launch.MixinDedicatedServer"
+  ],
+  "client": [
+    "branding.MixinClientBrandRetriever",
+    "internal.launch.MixinMinecraft",
+    "branding.MixinGuiMainMenu"
+  ]
+}
