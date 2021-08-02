@@ -11,7 +11,7 @@ buildscript {
 
     }
     dependencies {
-        classpath "com.github.asbyth:ForgeGradle:b13624b272"
+        classpath "com.github.BookMC:ForgeGradle:9d4f083e91"
         classpath "com.github.Skytils:mixingradle:d5f9873d60"
     }
 }
@@ -22,9 +22,9 @@ apply plugin: "java-library"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "org.bookmc.loader.impl.tweaker.BookMCServerLoader"
     mappings = "stable_22"
-    runDir = "run"
+    launchwrapper = false
+    runDir = "${project.name}/run"
     makeObfSourceJar = false
 }
 
@@ -35,14 +35,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
-        exclude module: "guava"
-        exclude module: "commons-io"
-        exclude module: "gson"
-        exclude module: "launchwrapper"
-        exclude module: "log4j-core"
-    }
-
     include(project(":common"))
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
@@ -50,12 +42,4 @@ dependencies {
         exclude module: "launchwrapper"
         exclude module: "log4j-core"
     }
-}
-
-jar {
-    manifest.attributes(
-        "TweakClass": "org.bookmc.loader.impl.tweaker.BookMCServerLoader",
-        "TweakOrder": 0,
-        "Manifest-Version": 1.0
-    )
 }
