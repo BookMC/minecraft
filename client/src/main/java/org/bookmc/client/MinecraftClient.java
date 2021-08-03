@@ -13,20 +13,13 @@ public class MinecraftClient extends MinecraftCommon {
 
     public static MinecraftClient INSTANCE = new MinecraftClient();
 
-    private final File modsFolder = new File(Minecraft.getMinecraft().mcDataDir, "mods");
-
     public void preload() {
         logger.info("Preloading BookMC!");
     }
-
 
     @Override
     public void load() {
         super.load();
         Display.setTitle(String.format("Minecraft %s (BookMC)", Minecraft.getMinecraft().getVersion()));
-    }
-
-    public File getModsFolder() {
-        return modsFolder;
     }
 }

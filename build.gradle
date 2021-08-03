@@ -4,7 +4,7 @@ allprojects {
     sourceCompatibility = targetCompatibility = 1.8
     compileJava.options.encoding = "UTF-8"
 
-    version = "0.1.1"
+    version = "0.1.2"
     group = "org.bookmc"
 
     repositories {
@@ -20,7 +20,7 @@ allprojects {
     }
 
     dependencies {
-        compileOnly "com.github.BookMC:book-loader:0.4.1"
+        compileOnly "com.github.BookMC:book-loader:0.5.0"
     }
 
     processResources {

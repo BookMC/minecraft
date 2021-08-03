@@ -2,15 +2,20 @@ package org.bookmc.common;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bookmc.loader.api.BookMCLoaderCommon;
 import org.bookmc.loader.api.vessel.ModVessel;
-import org.bookmc.loader.impl.BookModLoader;
 import org.bookmc.loader.impl.Loader;
+import org.bookmc.loader.impl.launch.Launcher;
 
 import java.util.List;
 
 public abstract class MinecraftCommon {
+    public static MinecraftCommon INSTANCE;
+
     private final Logger logger = LogManager.getLogger();
+
+    public void preload() {
+
+    }
 
     public void load() {
         StringBuilder mods = new StringBuilder();
@@ -30,6 +35,6 @@ public abstract class MinecraftCommon {
             logger.info("Starting BookMC with {} mod(s). Mods: {}", Loader.getModVessels().size(), mods.toString());
         }
 
-        BookModLoader.load(BookMCLoaderCommon.getEnvironment());
+        Loader.load(Launcher.getEnvironment());
     }
 }

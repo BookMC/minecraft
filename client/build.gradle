@@ -11,7 +11,7 @@ buildscript {
 
     }
     dependencies {
-        classpath "com.github.asbyth:ForgeGradle:b13624b272"
+        classpath "com.github.BookMC:ForgeGradle:9d4f083e91"
         classpath "com.github.Skytils:mixingradle:d5f9873d60"
     }
 }
@@ -21,10 +21,10 @@ apply plugin: "org.spongepowered.mixin"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "org.bookmc.loader.impl.tweaker.BookMCClientLoader"
+    mainClass = "org.bookmc.loader.impl.launch.Quilt"
     mappings = "stable_22"
-    runDir = "run"
-
+    runDir = "${project.name}/run"
+    launchwrapper = false
     makeObfSourceJar = false
 }
 
@@ -35,14 +35,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
-        exclude module: "guava"
-        exclude module: "commons-io"
-        exclude module: "gson"
-        exclude module: "launchwrapper"
-        exclude module: "log4j-core"
-    }
-    
     include(project(":common"))
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
@@ -56,10 +48,6 @@ mixin {
     // Specify "notch" or "searge" here
     defaultObfuscationEnv notch
     add sourceSets.main, "mixin.book.refmap.json"
-}
-
-jar {
-    manifest.attributes("MixinConfigs": "book.mixin.json")
 }
 
 tasks.jar.finalizedBy(tasks.reobfJar)
