@@ -1,24 +1,8 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "https://maven.minecraftforge.net"
-        }
-        maven {
-            url "https://jitpack.io"
-        }
-
-    }
-    dependencies {
-        classpath "com.github.BookMC:ForgeGradle:9d4f083e91"
-        classpath "com.github.Skytils:mixingradle:d5f9873d60"
-    }
+plugins {
+    id "net.minecraftforge.gradle.tweaker-server" version "91a4d3e4f4"
+    id "org.spongepowered.mixin" version "d5f9873d60"
+    id "java-library"
 }
-
-apply plugin: "net.minecraftforge.gradle.tweaker-server"
-apply plugin: "org.spongepowered.mixin"
-apply plugin: "java-library"
 
 minecraft {
     version = "1.8.9"
