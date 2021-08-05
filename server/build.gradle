@@ -6,9 +6,10 @@ plugins {
 
 minecraft {
     version = "1.8.9"
+    mainClass = "org.bookmc.loader.impl.launch.Quilt"
     mappings = "stable_22"
-    launchwrapper = false
     runDir = "${project.name}/run"
+    launchwrapper = false
     makeObfSourceJar = false
 }
 
