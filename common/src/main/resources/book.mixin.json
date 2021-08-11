@@ -11,6 +11,7 @@
   "client": [
     "branding.MixinClientBrandRetriever",
     "internal.launch.MixinMinecraft",
-    "branding.MixinGuiMainMenu"
+    "branding.MixinGuiMainMenu",
+    "branding.MixinGuiOverlayDebug"
   ]
 }

@@ -1,7 +1,6 @@
-package org.bookmc.client.asm;
+package org.bookmc.common.asm;
 
 import org.bookmc.loader.api.launch.transform.QuiltRemapper;
-import org.bookmc.loader.api.launch.transform.QuiltTransformer;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.bookmc.srg.SrgProcessor;
 import org.bookmc.srg.output.MappedClass;
@@ -14,9 +13,13 @@ import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MinecraftRemapper extends Remapper implements QuiltRemapper {
-    private final SrgOutput output;
+    private final Map<String, String> classes = new HashMap<>();
+    private final Map<String, MappedMethod> methods = new HashMap<>();
+    private final Map<String, MappedField> fields = new HashMap<>();
 
     public MinecraftRemapper() {
         File mappings = Launcher.getMappings();
@@ -27,7 +30,24 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
             }
         }
 
-        output = new SrgProcessor(mappings).process();
+        SrgOutput output = new SrgProcessor(mappings).process();
+
+        for (MappedClass mappedClass : output.getClasses()) {
+            classes.put(mappedClass.getObfuscatedName(), mappedClass.getDeobfuscatedName());
+        }
+
+        for (MappedMethod method : output.getMethods()) {
+            String owner = method.getObfuscatedOwner();
+            String name = method.getObfuscatedName();
+            String desc = method.getObfuscatedDescriptor();
+            methods.put(owner + ":" + name + ":" + desc, method);
+        }
+
+        for (MappedField field : output.getFields()) {
+            String owner = field.getObfuscatedOwner();
+            String name = field.getObfuscatedName();
+            fields.put(owner + ":" + name, field);
+        }
     }
 
     @Override
@@ -45,10 +65,9 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
     @Override
     public String mapFieldName(String owner, String name, String descriptor) {
-        for (MappedField field : output.getFields()) {
-            if (field.getObfuscatedName().equals(name) && field.getObfuscatedOwner().equals(owner)) {
-                return field.getDeobfuscatedName();
-            }
+        MappedField field = fields.get(owner + ":" + name);
+        if (field != null) {
+            return field.getDeobfuscatedName();
         }
 
         return super.mapFieldName(owner, name, descriptor);
@@ -56,10 +75,9 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
     @Override
     public String map(String internalName) {
-        for (MappedClass mappedClass : output.getClasses()) {
-            if (mappedClass.getObfuscatedName().equals(internalName)) {
-                return mappedClass.getDeobfuscatedName();
-            }
+        String deobf = classes.get(internalName);
+        if (deobf != null) {
+            return deobf;
         }
 
         int dollar = internalName.lastIndexOf('$');
@@ -72,10 +90,9 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
     @Override
     public String mapMethodName(String owner, String name, String descriptor) {
-        for (MappedMethod method : output.getMethods()) {
-            if (method.getObfuscatedName().equals(name) && method.getObfuscatedDescriptor().equals(descriptor) && method.getObfuscatedOwner().equals(owner)) {
-                return method.getDeobfuscatedName();
-            }
+        MappedMethod method = methods.get(owner + ":" + name + ":" + descriptor);
+        if (method != null) {
+            return method.getDeobfuscatedName();
         }
 
         return super.mapMethodName(owner, name, descriptor);
