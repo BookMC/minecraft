@@ -1,5 +1,5 @@
 plugins {
-    id "net.minecraftforge.gradle.tweaker-server" version "91a4d3e4f4"
+    id "net.minecraftforge.gradle.tweaker-server" version "6df939e"
     id "org.spongepowered.mixin" version "d5f9873d60"
     id "java-library"
 }
