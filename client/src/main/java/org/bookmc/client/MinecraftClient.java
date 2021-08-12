@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.bookmc.common.MinecraftCommon;
 import org.lwjgl.opengl.Display;
 
-import java.io.File;
-
 public class MinecraftClient extends MinecraftCommon {
     private final Logger logger = LogManager.getLogger();
 
