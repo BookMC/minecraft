@@ -12,29 +12,21 @@ import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
 
 import java.io.File;
-import java.util.HashMap;
 
 public class MinecraftRemapper extends Remapper implements QuiltRemapper {
-    private final SrgOutput output;
+    private SrgOutput output = null;
 
     public MinecraftRemapper() {
-        if (Launcher.isDevelopment()) {
-            File mappings = Launcher.getMappings();
+        File mappings = Launcher.getMappings();
 
-            if (mappings == null) {
-                throw new IllegalStateException("Failed to find mappings! Notch -> MCP. Did the game launch correctly?");
-            } else {
-                output = new SrgProcessor(mappings).process();
-            }
-        } else {
-            // In case something goes wrong
-            output = new SrgOutput(new HashMap<>(), new HashMap<>(), new HashMap<>());
+        if (mappings != null) {
+            output = new SrgProcessor(mappings).process();
         }
     }
 
     @Override
     public byte[] transform(String name, byte[] clazz) {
-        if (Launcher.isDevelopment()) {
+        if (output != null) {
             ClassReader reader = new ClassReader(clazz);
             ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS);
             ClassRemapper remapper = new ClassRemapper(writer, this);
