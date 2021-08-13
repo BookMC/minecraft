@@ -3,7 +3,6 @@ package org.bookmc.common.asm;
 import org.bookmc.loader.api.launch.transform.QuiltRemapper;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.bookmc.srg.SrgProcessor;
-import org.bookmc.srg.output.MappedClass;
 import org.bookmc.srg.output.MappedField;
 import org.bookmc.srg.output.MappedMethod;
 import org.bookmc.srg.output.SrgOutput;
@@ -14,12 +13,9 @@ import org.objectweb.asm.commons.Remapper;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Map;
 
 public class MinecraftRemapper extends Remapper implements QuiltRemapper {
-    private final Map<String, String> classes = new HashMap<>();
-    private final Map<String, MappedMethod> methods = new HashMap<>();
-    private final Map<String, MappedField> fields = new HashMap<>();
+    private final SrgOutput output;
 
     public MinecraftRemapper() {
         if (Launcher.isDevelopment()) {
@@ -28,25 +24,11 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
             if (mappings == null) {
                 throw new IllegalStateException("Failed to find mappings! Notch -> MCP. Did the game launch correctly?");
             } else {
-                SrgOutput output = new SrgProcessor(mappings).process();
-
-                for (MappedClass mappedClass : output.getClasses()) {
-                    classes.put(mappedClass.getObfuscatedName(), mappedClass.getDeobfuscatedName());
-                }
-
-                for (MappedMethod method : output.getMethods()) {
-                    String owner = method.getObfuscatedOwner();
-                    String name = method.getObfuscatedName();
-                    String desc = method.getObfuscatedDescriptor();
-                    methods.put(owner + ":" + name + ":" + desc, method);
-                }
-
-                for (MappedField field : output.getFields()) {
-                    String owner = field.getObfuscatedOwner();
-                    String name = field.getObfuscatedName();
-                    fields.put(owner + ":" + name, field);
-                }
+                output = new SrgProcessor(mappings).process();
             }
+        } else {
+            // In case something goes wrong
+            output = new SrgOutput(new HashMap<>(), new HashMap<>(), new HashMap<>());
         }
     }
 
@@ -65,7 +47,7 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
     @Override
     public String mapFieldName(String owner, String name, String descriptor) {
-        MappedField field = fields.get(owner + ":" + name);
+        MappedField field = output.getField(owner, name);
         if (field != null) {
             return field.getDeobfuscatedName();
         }
@@ -75,7 +57,7 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
     @Override
     public String map(String internalName) {
-        String deobf = classes.get(internalName);
+        String deobf = output.getClass(internalName);
         if (deobf != null) {
             return deobf;
         }
@@ -90,7 +72,7 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
     @Override
     public String mapMethodName(String owner, String name, String descriptor) {
-        MappedMethod method = methods.get(owner + ":" + name + ":" + descriptor);
+        MappedMethod method = output.getMethod(owner, name, descriptor);
         if (method != null) {
             return method.getDeobfuscatedName();
         }

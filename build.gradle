@@ -34,7 +34,7 @@ allprojects {
 
     dependencies {
         compileOnly "org.bookmc:book-loader:0.8.7${local ? "-local" : ""}"
-        include "org.bookmc:srg-processor:1.1.2"
+        include "org.bookmc:srg-processor:2.0.0"
     }
 
     processResources {
