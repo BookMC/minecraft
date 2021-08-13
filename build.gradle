@@ -7,14 +7,15 @@ allprojects {
 
     ext {
         def env = System.getenv()
-        local = env.GITHUB_ACTIONS ? false : false // Change this to true if you want local
+        devLocal = false // Change this to true if you want local
+        local = env.GITHUB_ACTIONS ? false : devLocal
         jdk = JavaVersion.current().getMajorVersion()
     }
 
     group "org.bookmc"
     // We add the suffix for (our) non-lts support.
     // Java 8 support will be removed in the future however.
-    version "0.2.1${local ? "-local" : ""}"
+    version "0.2.2${local ? "-local" : ""}"
 
     repositories {
         maven {
@@ -32,7 +33,7 @@ allprojects {
     }
 
     dependencies {
-        compileOnly "org.bookmc:book-loader:0.8.2${local ? "-local" : ""}"
+        compileOnly "org.bookmc:book-loader:0.8.7${local ? "-local" : ""}"
         include "org.bookmc:srg-processor:1.1.2"
     }
 

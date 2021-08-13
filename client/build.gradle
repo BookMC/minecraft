@@ -5,7 +5,7 @@ plugins {
 
 minecraft {
     version = "1.8.9"
-    mainClass = "org.bookmc.loader.impl.launch.Quilt"
+    mainClass = "org.bookmc.loader.impl.launch.QuiltClient"
     mappings = "stable_22"
     runDir = "${project.name}/run"
     launchwrapper = false

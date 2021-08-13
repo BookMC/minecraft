@@ -19,7 +19,7 @@
     ]
   },
   "depends": {
-    "book-loader": ">=0.8.2"
+    "book-loader": "*"
   },
   "remappers": [
     "org.bookmc.common.asm.MinecraftRemapper"
