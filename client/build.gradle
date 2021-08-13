@@ -12,6 +12,12 @@ minecraft {
     makeObfSourceJar = false
 }
 
+reobf {
+    jar {
+        mappingType = "SEARGE"
+    }
+}
+
 repositories {
     maven {
         url "https://repo.spongepowered.org/repository/maven-public/"
@@ -30,7 +36,7 @@ dependencies {
 
 mixin {
     // Specify "notch" or "searge" here
-    defaultObfuscationEnv notch
+    defaultObfuscationEnv searge
     add sourceSets.main, "mixin.book.refmap.json"
 }
 
