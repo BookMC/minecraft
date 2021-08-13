@@ -27,26 +27,25 @@ public class MinecraftRemapper extends Remapper implements QuiltRemapper {
 
             if (mappings == null) {
                 throw new IllegalStateException("Failed to find mappings! Notch -> MCP. Did the game launch correctly?");
-            }
+            } else {
+                SrgOutput output = new SrgProcessor(mappings).process();
 
+                for (MappedClass mappedClass : output.getClasses()) {
+                    classes.put(mappedClass.getObfuscatedName(), mappedClass.getDeobfuscatedName());
+                }
 
-            SrgOutput output = new SrgProcessor(mappings).process();
+                for (MappedMethod method : output.getMethods()) {
+                    String owner = method.getObfuscatedOwner();
+                    String name = method.getObfuscatedName();
+                    String desc = method.getObfuscatedDescriptor();
+                    methods.put(owner + ":" + name + ":" + desc, method);
+                }
 
-            for (MappedClass mappedClass : output.getClasses()) {
-                classes.put(mappedClass.getObfuscatedName(), mappedClass.getDeobfuscatedName());
-            }
-
-            for (MappedMethod method : output.getMethods()) {
-                String owner = method.getObfuscatedOwner();
-                String name = method.getObfuscatedName();
-                String desc = method.getObfuscatedDescriptor();
-                methods.put(owner + ":" + name + ":" + desc, method);
-            }
-
-            for (MappedField field : output.getFields()) {
-                String owner = field.getObfuscatedOwner();
-                String name = field.getObfuscatedName();
-                fields.put(owner + ":" + name, field);
+                for (MappedField field : output.getFields()) {
+                    String owner = field.getObfuscatedOwner();
+                    String name = field.getObfuscatedName();
+                    fields.put(owner + ":" + name, field);
+                }
             }
         }
     }
