@@ -14,7 +14,7 @@ public class MixinGuiOverlayDebug {
     @ModifyVariable(method = "getDebugInfoRight", ordinal = 0, at = @At("RETURN"))
     private List<String> getDebugInfoRight(List<String> list) {
         list.add("");
-        list.add("Mappings: " + (Launcher.isDevelopment() ? "MCP" : "Notch"));
+        list.add("Mappings: " + (Launcher.isDevelopment() ? "MCP" : "Searge"));
         list.add("Mods loaded: " + Loader.getModVessels().size());
         list.add("Mixin Versioan: " + Launcher.getProperties().get("mixin.initialised"));
         list.add("Loader Version: " + Loader.getModVesselsMap().get("book-loader").getVersion());
