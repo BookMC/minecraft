@@ -24,7 +24,7 @@ version "0.3.0${local ? "-local" : ""}"
 repositories {
     mavenCentral()
     maven {
-        url "https://maven.bookmc.org"
+        url "https://maven.bookmc.org/"
     }
     maven {
         url "https://repo.spongepowered.org/repository/maven-public/"
@@ -100,8 +100,8 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
             pom {
-                name = "book-loader"
-                url = "https://github.com/BookMC/minecraft"
+                name = project.name
+                url = "https://github.com/BookMC/${project.name}"
 
                 developers {
                     developer {
