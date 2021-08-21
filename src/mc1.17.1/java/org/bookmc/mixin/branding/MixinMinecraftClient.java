@@ -1,13 +1,13 @@
 package org.bookmc.mixin.branding;
 
+import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Slice;
 
-@Pseudo
-@Mixin(targets = "net.minecraft.client.MinecraftClient")
+@Mixin(MinecraftClient.class)
 public class MixinMinecraftClient {
     @ModifyVariable(
         method = "getWindowTitle",

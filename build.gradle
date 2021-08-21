@@ -1,7 +1,7 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "me.dreamhopping.pml.gradle" version "3.0.0"
+    id "me.dreamhopping.pml.gradle" version "3.1.6-local"
 }
 
 java {
@@ -15,7 +15,6 @@ ext {
 
     devLocal = false // Change this to true if you want local
     local = env.GITHUB_ACTIONS ? false : devLocal
-    jdk = JavaVersion.current().getMajorVersion()
 }
 
 group "org.bookmc"
@@ -42,10 +41,12 @@ minecraft {
     serverRunClass = "org.bookmc.loader.impl.launch.QuiltServer"
 
 
-    target('1.17.1') {
-        accessTransformer './src/mc1.17.1/resources/access.json'
-        yarn(null)
+    target("1.17.1") {
+        accessTransformer "./src/mc1.17.1/resources/accessor.json"
+        yarn()
     }
+
+    target "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.10.2", "1.9.4"
 }
 
 configurations {
@@ -57,7 +58,7 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:2.14.1"
     implementation "org.apache.logging.log4j:log4j-core:2.14.1"
 
-    implementation "org.bookmc:book-loader:0.8.20${local ? "-local" : ""}"
+    implementation "org.bookmc:book-loader:0.8.22+${local ? "local" : "build.1"}"
 
     include("org.bookmc:srg-processor:2.0.1") {
         exclude module: "log4j-api"
@@ -80,6 +81,8 @@ jar {
 publishing {
     repositories {
         maven {
+            name "BookMC"
+
             def env = System.getenv()
 
             boolean isEnvVarsAvailable = env.containsKey("MAVEN_USER") && env.containsKey("MAVEN_PASSWORD")
