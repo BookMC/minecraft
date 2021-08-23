@@ -1,4 +1,4 @@
-package org.bookmc.client.compat;
+package org.bookmc.asm.compat;
 
 import org.bookmc.loader.api.launch.transform.QuiltTransformer;
 import org.bookmc.loader.impl.launch.Launcher;

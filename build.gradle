@@ -1,7 +1,7 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "me.dreamhopping.pml.gradle" version "3.1.9+build.6"
+    id "me.dreamhopping.pml.gradle" version "3.3.0+build.9"
     id "org.bookmc.buildtools" version "0.3.+"
 }
 
@@ -23,7 +23,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.4.0${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.4.1${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -42,16 +42,7 @@ repositories {
 minecraft {
     separateVersionJars()
 
-    clientRunClass = "org.bookmc.loader.impl.launch.QuiltClient"
-    serverRunClass = "org.bookmc.loader.impl.launch.QuiltServer"
-
-
-    target("1.17.1") {
-        accessTransformer "./src/mc1.17.1/resources/accessor.json"
-        yarn()
-    }
-
-    target "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.10.2", "1.9.4"
+    target "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.10.2", "1.9.4"
 }
 
 configurations {

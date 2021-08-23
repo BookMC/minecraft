@@ -20,5 +20,8 @@
   },
   "depends": {
     "book-loader": "*"
-  }
+  },
+  "asm": [
+    "org.bookmc.asm.access.PackagePrivateTransformer"
+  ]
 }
