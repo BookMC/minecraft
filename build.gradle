@@ -6,6 +6,8 @@ plugins {
 }
 
 java {
+    withSourcesJar()
+
     toolchain {
         languageVersion = JavaLanguageVersion.of(16)
     }
@@ -81,14 +83,40 @@ jar {
     exclude "module-info.class"
 }
 
+sourcesJar.enabled = false
+
+artifacts {
+    sourceSets.forEach(s -> {
+        def sourceTask = tasks.register("sourcesJar${s.name}", Jar) {
+            it.group = "build"
+            it.archiveClassifier.set("${it.archiveClassifier.get()}${s.name == "main" ? "" : s.name}-sources")
+            it.from(s.java.srcDirs)
+            it.setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+        }
+
+        def javadocTask = tasks.register("javadocJar${s.name}", Jar) {
+            it.group = "build"
+            it.dependsOn(tasks.javadoc)
+            it.archiveClassifier.set("${it.archiveClassifier.get()}${s.name == "main" ? "" : s.name}-javadoc")
+            it.from(s.java.srcDirs)
+            it.setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+        }
+
+        archives(sourceTask)
+        archives(javadocTask)
+    });
+}
+
+
 publishing {
     repositories {
         maven {
-            name "BookMC"
-
             def env = System.getenv()
 
             boolean isEnvVarsAvailable = env.containsKey("MAVEN_USER") && env.containsKey("MAVEN_PASSWORD")
+
+            name local || !isEnvVarsAvailable ? "RepositoryFolder" : "BookMC"
+
 
             if (isEnvVarsAvailable) {
                 credentials {
