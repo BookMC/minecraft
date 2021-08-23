@@ -2,7 +2,7 @@
   "client": [
     "branding.MixinClientBrandRetriever",
     "internal.launch.MixinMinecraftClient",
-    "branding.MixinMinecraftClient",
+    "branding.MixinWindowProvider",
     "branding.MixinTitleScreen"
   ],
   "compatibilityLevel": "JAVA_16",

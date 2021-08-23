@@ -20,8 +20,5 @@
   },
   "depends": {
     "book-loader": "*"
-  },
-  "asm": [
-    "org.bookmc.client.asm.compat.GuavaCompatibility"
-  ]
+  }
 }

@@ -1,6 +1,5 @@
 {
   "client": [
-    "internal.compat.guava.MixinBlockStateMapper",
     "branding.MixinClientBrandRetriever",
     "branding.MixinGuiMainMenu",
     "internal.launch.MixinMinecraft"

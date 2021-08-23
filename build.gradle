@@ -16,10 +16,12 @@ ext {
 
     devLocal = false // Change this to true if you want local
     local = env.GITHUB_ACTIONS ? false : devLocal
+    buildNumber = env.BUILD_NUMBER
+    branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
 }
 
 group "org.bookmc"
-version "0.3.0${local ? "-local" : ""}"
+version "0.4.0${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -59,7 +61,7 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:2.14.1"
     implementation "org.apache.logging.log4j:log4j-core:2.14.1"
 
-    implementation "org.bookmc:book-loader:0.8.22+${local ? "local" : "build.1"}"
+    implementation "org.bookmc:book-loader:0.9.1+${local ? "local" : "build.9"}"
 
     include("org.bookmc:srg-processor:2.0.1") {
         exclude module: "log4j-api"
