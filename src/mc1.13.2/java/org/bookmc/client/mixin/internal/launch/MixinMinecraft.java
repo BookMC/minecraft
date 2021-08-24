@@ -10,13 +10,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
-public class MixinMinecraftClient {
+public class MixinMinecraft {
     /**
      * Inject into the constructor of {@link net.minecraft.client.Minecraft} and
      * begin to load the independent loader.
      *
      * @param config The arguments passed to the game via launch
-     * @param ci      See {@link CallbackInfo}
+     * @param ci     See {@link CallbackInfo}
      */
     @Inject(
         method = "<init>",

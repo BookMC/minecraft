@@ -1,9 +1,9 @@
 {
   "client": [
     "branding.MixinClientBrandRetriever",
-    "internal.launch.MixinMinecraftClient",
+    "branding.MixinGuiMainMenu",
     "branding.MixinMainWindow",
-    "branding.MixinGuiMainMenu"
+    "internal.launch.MixinMinecraft"
   ],
   "compatibilityLevel": "JAVA_16",
   "minVersion": "0.8.2",
