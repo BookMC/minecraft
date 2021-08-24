@@ -26,6 +26,7 @@ public class MinecraftVersionLookup {
                 GameVersion version = versionLookup.find();
                 if (version != null) {
                     MinecraftVersionLookup.version = version;
+                    break;
                 }
             }
         }
