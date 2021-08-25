@@ -16,7 +16,7 @@ java {
 ext {
     def env = System.getenv()
 
-    devLocal = true // Change this to true if you want local
+    devLocal = false // Change this to true if you want local
     local = env.GITHUB_ACTIONS ? false : devLocal
     buildNumber = env.BUILD_NUMBER
     branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
@@ -54,7 +54,7 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:2.14.1"
     implementation "org.apache.logging.log4j:log4j-core:2.14.1"
 
-    implementation("org.bookmc:book-loader:0.9.4+${local ? "local" : "build.12"}") {
+    implementation("org.bookmc:book-loader:0.9.5+${local ? "local" : "build.14"}") {
         exclude module: "sponge-mixin"
     }
 
