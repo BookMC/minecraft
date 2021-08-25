@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "org/bookmc/client/mixin/internal/launch/MixinMinecraftClient": {
+      "Lnet/minecraft/client/util/Window;setPhase(Ljava/lang/String;)V": "Lbgp/a(Lbgo;)V"
+    },
+    "org/bookmc/client/mixin/branding/MixinMinecraftClient": {
+      "Lnet/minecraft/client/MinecraftClient;getWindowTitle()Ljava/lang/String;": "Ldvp/aH()Ljava/lang/String;"
+    },
+    "org/bookmc/client/mixin/branding/MixinTitleScreen": {
+      "Lnet/minecraft/client/gui/screen/TitleScreen;render(Lnet/minecraft/client/util/math/MatrixStack;IIF)V": "Ldxv/a(Ldql;IIF)V",
+      "Lnet/minecraft/client/MinecraftClient;isDemo()Z": "Ldvp/v()Z"
+    }
+  }
+}

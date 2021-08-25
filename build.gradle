@@ -16,14 +16,14 @@ java {
 ext {
     def env = System.getenv()
 
-    devLocal = false // Change this to true if you want local
+    devLocal = true // Change this to true if you want local
     local = env.GITHUB_ACTIONS ? false : devLocal
     buildNumber = env.BUILD_NUMBER
     branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
 }
 
 group "org.bookmc"
-version "0.5.2${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.5.3${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -54,7 +54,15 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:2.14.1"
     implementation "org.apache.logging.log4j:log4j-core:2.14.1"
 
-    implementation "org.bookmc:book-loader:0.9.3+${local ? "local" : "build.12"}"
+    implementation("org.bookmc:book-loader:0.9.4+${local ? "local" : "build.12"}") {
+        exclude module: "sponge-mixin"
+    }
+
+    annotationProcessor("org.spongepowered:mixin:0.8.3-SNAPSHOT:processor") {
+        exclude module: "commons-io"
+        exclude module: "launchwrapper"
+        exclude module: "log4j-core"
+    }
 
     compileOnly "com.google.code.gson:gson:2.8.8"
 }
