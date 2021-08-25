@@ -21,7 +21,7 @@ public class MixinMinecraftClient {
     @Inject(
         method = "<init>",
         at = @At(
-            value = "INVOKE",
+            value = "INVOKE_STRING",
             target = "Lnet/minecraft/client/util/Window;setPhase(Ljava/lang/String;)V",
             args = "ldc=Startup",
             shift = At.Shift.AFTER,

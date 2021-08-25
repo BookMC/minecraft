@@ -1,7 +1,7 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "me.dreamhopping.pml.gradle" version "3.3.0+build.9"
+    id "me.dreamhopping.pml.gradle" version "3.5.1+build.11"
     id "org.bookmc.buildtools" version "0.3.+"
 }
 
@@ -23,7 +23,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.5.1${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.5.2${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -72,28 +72,6 @@ jar {
 }
 
 sourcesJar.enabled = false
-
-artifacts {
-    sourceSets.forEach(s -> {
-        def sourceTask = tasks.register("sourcesJar${s.name}", Jar) {
-            it.group = "build"
-            it.archiveClassifier.set("${it.archiveClassifier.get()}${s.name == "main" ? "" : s.name}-sources")
-            it.from(s.java.srcDirs)
-            it.setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-        }
-
-        def javadocTask = tasks.register("javadocJar${s.name}", Jar) {
-            it.group = "build"
-            it.dependsOn(tasks.javadoc)
-            it.archiveClassifier.set("${it.archiveClassifier.get()}${s.name == "main" ? "" : s.name}-javadoc")
-            it.from(s.java.srcDirs)
-            it.setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-        }
-
-        archives(sourceTask)
-        archives(javadocTask)
-    });
-}
 
 
 publishing {
