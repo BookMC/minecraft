@@ -1,8 +1,9 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "me.dreamhopping.pml.gradle" version "3.5.1+build.11"
+    id "me.dreamhopping.pml.gradle" version "3.7.3+build.16"
     id "org.bookmc.buildtools" version "0.3.+"
+    id "org.bookmc.annotation-processor-configuration" version "0.1.2+build.3"
 }
 
 java {
@@ -42,7 +43,7 @@ repositories {
 minecraft {
     separateVersionJars()
 
-    target "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.10.2", "1.9.4"
+    target "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.9.4"
 }
 
 configurations {
@@ -56,12 +57,6 @@ dependencies {
 
     implementation("org.bookmc:book-loader:0.9.9-rentrance-issues+${local ? "local" : "build.18"}") {
         exclude module: "sponge-mixin"
-    }
-
-    annotationProcessor("org.spongepowered:mixin:0.8.3-SNAPSHOT:processor") {
-        exclude module: "commons-io"
-        exclude module: "launchwrapper"
-        exclude module: "log4j-core"
     }
 
     compileOnly "com.google.code.gson:gson:2.8.8"
