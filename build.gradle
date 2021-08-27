@@ -1,7 +1,7 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "me.dreamhopping.pml.gradle" version "3.7.3+build.16"
+    id "me.dreamhopping.pml.gradle" version "3.8.1+build.18"
     id "org.bookmc.buildtools" version "0.3.+"
     id "org.bookmc.annotation-processor-configuration" version "0.1.2+build.3"
 }
@@ -43,7 +43,7 @@ repositories {
 minecraft {
     separateVersionJars()
 
-    target "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.9.4"
+    target "1.18_experimental-snapshot-5", "1.18_experimental-snapshot-4", "1.18_experimental-snapshot-3", "1.18_experimental-snapshot-2", "1.18_experimental-snapshot-1", "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.9.4"
 }
 
 configurations {
@@ -55,7 +55,7 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:2.14.1"
     implementation "org.apache.logging.log4j:log4j-core:2.14.1"
 
-    implementation("org.bookmc:book-loader:0.9.9-rentrance-issues+${local ? "local" : "build.18"}") {
+    implementation("org.bookmc:book-loader:0.10.0+${local ? "local" : "build.19"}") {
         exclude module: "sponge-mixin"
     }
 

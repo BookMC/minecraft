@@ -1,0 +1,14 @@
+{
+  "client": [
+    "branding.MixinClientBrandRetriever",
+    "branding.MixinMinecraftClient",
+    "branding.MixinTitleScreen",
+    "internal.launch.MixinMinecraftClient"
+  ],
+  "compatibilityLevel": "JAVA_16",
+  "minVersion": "0.8.2",
+  "package": "org.bookmc.client.mixin",
+  "refmap": "mixin.refmap.json",
+  "required": true,
+  "verbose": true
+}
