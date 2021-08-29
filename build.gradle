@@ -1,7 +1,7 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "me.dreamhopping.pml.gradle" version "3.8.1+build.18"
+    id "me.dreamhopping.pml.gradle" version "3.10.0+build.20"
     id "org.bookmc.buildtools" version "0.3.+"
     id "org.bookmc.annotation-processor-configuration" version "0.1.2+build.3"
 }
@@ -24,7 +24,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.6.0${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.6.1${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -43,7 +43,11 @@ repositories {
 minecraft {
     separateVersionJars()
 
-    target "1.18_experimental-snapshot-5", "1.18_experimental-snapshot-4", "1.18_experimental-snapshot-3", "1.18_experimental-snapshot-2", "1.18_experimental-snapshot-1", "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.12.2", "1.11.2", "1.9.4"
+    target "1.18_experimental-snapshot-5", "1.18_experimental-snapshot-4", "1.18_experimental-snapshot-3", "1.18_experimental-snapshot-2", "1.18_experimental-snapshot-1", "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.11.2", "1.9.4"
+
+    target("1.12.2") {
+        mcp("snapshot", "20171003")
+    }
 }
 
 configurations {
