@@ -62,9 +62,7 @@ dependencies {
     compileOnly "com.google.code.gson:gson:2.8.8"
 }
 
-tasks.withType(AbstractCopyTask.class) {
-    duplicatesStrategy DuplicatesStrategy.EXCLUDE
-}
+sourcesJar.enabled = false
 
 jar {
     from {
@@ -72,6 +70,8 @@ jar {
             it.isDirectory() ? it : zipTree(it)
         }
     }
+
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
 }
 
 publishing {
