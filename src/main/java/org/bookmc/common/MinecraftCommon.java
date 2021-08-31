@@ -33,4 +33,8 @@ public abstract class MinecraftCommon {
 
         Loader.load(Launcher.getEnvironment());
     }
+
+    public static class None extends MinecraftCommon {
+
+    }
 }

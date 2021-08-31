@@ -16,8 +16,17 @@ public class YarnUtils {
         return null;
     }
 
-
     private static String toResourceLocation(String name) {
         return "/" + name.replace(".", "/").concat(".class");
+    }
+
+    public static boolean isYarnMapped() {
+        try (InputStream stream = YarnUtils.class.getResourceAsStream(toResourceLocation("net.minecraft.MinecraftVersion"))) {
+           return stream != null;
+        } catch (IOException ignored) {
+
+        }
+
+        return false;
     }
 }

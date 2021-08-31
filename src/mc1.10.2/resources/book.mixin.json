@@ -1,8 +1,8 @@
 {
   "client": [
-    "branding.MixinClientBrandRetriever",
-    "branding.MixinGuiMainMenu",
-    "internal.launch.MixinMinecraft"
+    "org.bookmc.mixin.client.branding.MixinClientBrandRetriever",
+    "org.bookmc.mixin.client.branding.MixinGuiMainMenu",
+    "org.bookmc.mixin.client.launch.MixinMinecraft"
   ],
   "compatibilityLevel": "JAVA_16",
   "minVersion": "0.8.2",
