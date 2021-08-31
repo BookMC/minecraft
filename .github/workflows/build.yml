@@ -1,17 +1,10 @@
-name: Build and test
+name: Build & Verify compilation
 
-on:
-  push:
+on: [pull_request, workflow_dispatch]
 jobs:
-  build_test_and_publish_jdk16:
+  build_and_test_jdk16:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate build number
-        id: buildnumber
-        uses: einaregilsson/build-number@v3
-        with:
-          token: ${{ secrets.github_token }}
-          prefix: actions
       - uses: actions/checkout@v2
       - name: Set up JDK 16
         uses: actions/setup-java@v2
@@ -29,8 +22,4 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
-        run: ./gradlew setup publish commitWebhook
-        env:
-          MAVEN_USER: ${{ secrets.MAVEN_USER }}
-          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: ./gradlew setup build
