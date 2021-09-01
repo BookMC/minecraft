@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "maven-publish"
     id "org.bookmc.buildtools" version "0.3.8+build.29"
-    id "me.dreamhopping.pml.gradle" version "3.11.2+build.23"
+    id "me.dreamhopping.pml.gradle" version "3.11.3+build.24"
     id "org.bookmc.annotation-processor-configuration" version "0.2.1+build.6"
 }
 
@@ -24,7 +24,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.8.0${branch != "main" ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.8.1${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
