@@ -5,7 +5,6 @@ import org.bookmc.client.BookGameClient;
 import org.bookmc.common.MinecraftCommon;
 import org.bookmc.version.MinecraftVersionLookup;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -31,8 +30,8 @@ public class MixinMinecraft {
     /**
      * @author ChachyDev
      */
-    @Overwrite
-    public String getVersion() {
+    @Redirect(method = "getVersion", at = @At(value = "FIELD", target = "Lnet/minecraft/client/Minecraft;launchedVersion:Ljava/lang/String;"))
+    private String getVersion(Minecraft minecraft) {
         return MinecraftVersionLookup.find().id();
     }
 }
