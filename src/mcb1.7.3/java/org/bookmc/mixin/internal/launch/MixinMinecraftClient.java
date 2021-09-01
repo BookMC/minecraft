@@ -1,7 +1,6 @@
 package org.bookmc.mixin.internal.launch;
 
 import net.minecraft.client.MinecraftClient;
-import org.bookmc.client.BookGameClient;
 import org.bookmc.common.MinecraftCommon;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -21,7 +20,7 @@ public class MixinMinecraftClient {
         )
     )
     private void startGame(CallbackInfo ci) {
-        MinecraftCommon.INSTANCE = new BookGameClient();
+        MinecraftCommon.INSTANCE = new MinecraftCommon.None();
         MinecraftCommon.INSTANCE.load();
     }
 }

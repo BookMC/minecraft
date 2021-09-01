@@ -1,6 +1,7 @@
 package org.bookmc.mixin.branding;
 
 import net.minecraft.client.MinecraftClient;
+import org.bookmc.constants.Constants;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -13,6 +14,6 @@ public class MixinMinecraftClient {
         constant = @Constant(stringValue = "Minecraft")
     )
     private static String startGame(String s) {
-        return "Minecraft Beta 1.7.3 (BookMC)";
+        return "Minecraft Beta 1.7.3 (" + Constants.GAME_BRANDING + ")";
     }
 }
