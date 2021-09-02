@@ -24,7 +24,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.9.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.10.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -43,7 +43,21 @@ repositories {
 minecraft {
     separateVersionJars()
 
-    target "1.18_experimental-snapshot-5", "1.18_experimental-snapshot-4", "1.18_experimental-snapshot-3", "1.18_experimental-snapshot-2", "1.18_experimental-snapshot-1", "1.17.1", "1.16.5", "1.15.2", "1.14.4", "1.13.2", "1.11.2", "1.10.2", "1.9.4", "b1.7.3"
+    target "1.18_experimental-snapshot-5",
+        "1.18_experimental-snapshot-4",
+        "1.18_experimental-snapshot-3",
+        "1.18_experimental-snapshot-2",
+        "1.18_experimental-snapshot-1",
+        "1.17.1",
+        "1.16.5",
+        "1.15.2",
+        "1.14.4",
+        "1.13.2",
+        "1.11.2",
+        "1.10.2",
+        "1.9.4",
+        "1.8.9",
+        "b1.7.3"
 }
 
 configurations {
