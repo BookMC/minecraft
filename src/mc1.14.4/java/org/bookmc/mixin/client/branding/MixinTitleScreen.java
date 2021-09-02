@@ -1,6 +1,7 @@
 package org.bookmc.mixin.client.branding;
 
 import net.minecraft.client.gui.screen.TitleScreen;
+import org.bookmc.constants.Constants;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -17,6 +18,6 @@ public class MixinTitleScreen {
         ordinal = 0
     )
     private String getGameString(String game) {
-        return game + " (BookMC)";
+        return game + " (" + Constants.GAME_BRANDING +")";
     }
 }

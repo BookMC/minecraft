@@ -24,7 +24,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.8.2${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.9.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -55,14 +55,19 @@ configurations {
 }
 
 dependencies {
-    implementation "org.apache.logging.log4j:log4j-api:2.14.1"
-    implementation "org.apache.logging.log4j:log4j-core:2.14.1"
-
+    // To be downloaded via the launcher itself
     implementation("org.bookmc:book-loader:0.10.0+${local ? "local" : "build.19"}") {
         exclude module: "sponge-mixin"
     }
 
+    // Minecraft already has these libraries we just need them for the common module
     compileOnly "com.google.code.gson:gson:2.8.8"
+
+    // In all attempts to avoid log4j issues we must compile against
+    // an older version of log4j due to receiving a NoSuchMethodError
+    // TBE: java.lang.NoSuchMethodError: 'void org.apache.logging.log4j.Logger.info(java.lang.String, java.lang.Object, java.lang.Object)'
+    compileOnly "org.apache.logging.log4j:log4j-api:2.0-beta9"
+    compileOnly "org.apache.logging.log4j:log4j-core:2.0-beta9"
 
     mcb173Include "com.google.code.gson:gson:2.8.8"
 }
