@@ -1,6 +1,6 @@
 name: Publish
 
-on: [workflow_dispatch, push]
+on: [workflow_dispatch]
 jobs:
   build_test_and_publish_jdk16:
     runs-on: ubuntu-latest

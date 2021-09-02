@@ -1,6 +1,6 @@
 name: Build & Verify compilation
 
-on: [pull_request, workflow_dispatch]
+on: [pull_request, push]
 jobs:
   build_and_test_jdk16:
     runs-on: ubuntu-latest
