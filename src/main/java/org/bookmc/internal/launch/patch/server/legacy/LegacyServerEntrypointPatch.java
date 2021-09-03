@@ -34,7 +34,8 @@ public class LegacyServerEntrypointPatch implements MinecraftPatch {
         return methodNode.name.equals("startServer") ||
             methodNode.name.equals("i") ||
             methodNode.name.equals("init") ||
-            methodNode.name.equals("j");
+            methodNode.name.equals("j") ||
+            methodNode.name.equals("d");
     }
 
     public boolean isPlayerList(MethodInsnNode methodInsnNode) {

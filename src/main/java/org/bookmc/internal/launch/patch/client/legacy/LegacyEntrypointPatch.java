@@ -16,7 +16,7 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
             if (isInit(methodNode)) {
                 for (AbstractInsnNode insnNode : methodNode.instructions) {
                     if (insnNode instanceof MethodInsnNode methodInsnNode) {
-                        if (methodInsnNode.name.equals("checkGLError") || methodInsnNode.name.equals("b")) {
+                        if (isSetPhase(methodInsnNode)) {
                             if (methodInsnNode.getPrevious() instanceof LdcInsnNode previous) {
                                 if (previous.cst.equals("Startup")) {
                                     methodNode.instructions.insert(methodInsnNode, createHook(MinecraftCommon.class, "load", "()V"));
@@ -32,5 +32,9 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
 
     private boolean isInit(MethodNode methodNode) {
         return methodNode.name.equals("startGame") || methodNode.name.equals("am") || methodNode.name.equals("init") || methodNode.name.equals("an");
+    }
+
+    private boolean isSetPhase(MethodInsnNode methodInsnNode) {
+        return methodInsnNode.name.equals("checkGLError") || methodInsnNode.name.equals("b") || methodInsnNode.name.equals("setRenderPhase") || methodInsnNode.name.equals("a");
     }
 }
