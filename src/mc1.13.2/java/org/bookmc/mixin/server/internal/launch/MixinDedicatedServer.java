@@ -1,7 +1,7 @@
 package org.bookmc.mixin.server.internal.launch;
 
 import net.minecraft.server.dedicated.DedicatedServer;
-import org.bookmc.common.MinecraftCommon;
+import org.bookmc.internal.MinecraftCommon;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

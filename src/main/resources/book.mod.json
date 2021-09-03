@@ -22,7 +22,8 @@
     "book-loader": "*"
   },
   "asm": [
-    "org.bookmc.asm.access.PackagePrivateTransformer",
-    "org.bookmc.asm.compat.GuavaCompatibility"
+    "org.bookmc.internal.asm.access.PackagePrivateTransformer",
+    "org.bookmc.internal.asm.compat.GuavaCompatibility",
+    "org.bookmc.internal.asm.patching.PatchSystemTransformer"
   ]
 }

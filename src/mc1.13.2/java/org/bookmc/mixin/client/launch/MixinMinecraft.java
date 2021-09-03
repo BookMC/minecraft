@@ -2,8 +2,8 @@ package org.bookmc.mixin.client.launch;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.GameConfiguration;
-import org.bookmc.common.MinecraftCommon;
-import org.bookmc.version.MinecraftVersionLookup;
+import org.bookmc.internal.MinecraftCommon;
+import org.bookmc.internal.util.version.MinecraftVersionLookup;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

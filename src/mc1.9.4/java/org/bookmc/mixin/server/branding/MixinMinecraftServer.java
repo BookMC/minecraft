@@ -1,7 +1,7 @@
 package org.bookmc.mixin.server.branding;
 
 import net.minecraft.server.MinecraftServer;
-import org.bookmc.constants.Constants;
+import org.bookmc.internal.util.constants.Constants;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 

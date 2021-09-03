@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "maven-publish"
     id "org.bookmc.buildtools" version "0.3.8+build.29"
-    id "me.dreamhopping.pml.gradle" version "3.11.3+build.24"
+    id "me.dreamhopping.pml.gradle" version "3.12.0+build.25"
     id "org.bookmc.annotation-processor-configuration" version "0.2.1+build.6"
 }
 
