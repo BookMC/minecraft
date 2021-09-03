@@ -36,6 +36,7 @@ public class LegacyServerEntrypointPatch implements MinecraftPatch {
 
     public boolean isPlayerList(MethodInsnNode methodInsnNode) {
         return methodInsnNode.name.equals("setConfigManager") ||
-            methodInsnNode.name.equals("a");
+            methodInsnNode.name.equals("a") ||
+            methodInsnNode.name.equals("setPlayerList");
     }
 }

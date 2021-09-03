@@ -13,11 +13,6 @@
   },
   "license": "GPL-3.0",
   "environment": "*",
-  "mixin": {
-    "*": [
-      "book.mixin.json"
-    ]
-  },
   "depends": {
     "book-loader": "*"
   },
