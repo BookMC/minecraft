@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "java-library"
     id "maven-publish"
     id "org.bookmc.buildtools" version "0.3.8+build.29"
     id "me.dreamhopping.pml.gradle" version "3.12.0+build.25"
@@ -70,7 +71,7 @@ configurations {
 
 dependencies {
     // To be downloaded via the launcher itself
-    implementation("org.bookmc:book-loader:0.10.0+${local ? "local" : "build.19"}") {
+    api("org.bookmc:book-loader:0.13.0+${local ? "local" : "build.19"}") {
         exclude module: "sponge-mixin"
     }
 

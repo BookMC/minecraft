@@ -1,11 +1,11 @@
 package org.bookmc.internal.launch.compat;
 
+import org.bookmc.internal.util.version.MinecraftVersionLookup;
+import org.bookmc.internal.util.version.api.asm.yarn.utils.YarnUtils;
 import org.bookmc.loader.api.vessel.environment.Environment;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.bookmc.loader.impl.launch.provider.ArgumentHandler;
 import org.bookmc.loader.impl.launch.provider.GameProvider;
-import org.bookmc.internal.util.version.MinecraftVersionLookup;
-import org.bookmc.internal.util.version.api.asm.yarn.utils.YarnUtils;
 
 import java.io.File;
 

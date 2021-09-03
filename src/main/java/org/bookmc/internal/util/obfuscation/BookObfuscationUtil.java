@@ -1,8 +1,8 @@
 package org.bookmc.internal.util.obfuscation;
 
 import com.google.gson.Gson;
-import org.bookmc.internal.util.obfuscation.data.Mappings;
 import org.bookmc.internal.util.ASMUtil;
+import org.bookmc.internal.util.obfuscation.data.Mappings;
 
 import java.io.File;
 import java.io.FileInputStream;

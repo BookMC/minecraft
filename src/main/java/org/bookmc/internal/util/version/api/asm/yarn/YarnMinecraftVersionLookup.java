@@ -1,9 +1,9 @@
 package org.bookmc.internal.util.version.api.asm.yarn;
 
-import org.bookmc.internal.util.version.api.asm.yarn.utils.ASMUtil;
-import org.bookmc.internal.util.version.api.asm.yarn.utils.YarnUtils;
 import org.bookmc.internal.util.version.api.GameVersion;
 import org.bookmc.internal.util.version.api.VersionLookup;
+import org.bookmc.internal.util.version.api.asm.yarn.utils.ASMUtil;
+import org.bookmc.internal.util.version.api.asm.yarn.utils.YarnUtils;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.*;
 

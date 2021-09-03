@@ -1,6 +1,6 @@
 package org.bookmc.internal.launch.patch.server.legacy;
 
-import org.bookmc.internal.MinecraftCommon;
+import org.bookmc.internal.LoaderInternal;
 import org.bookmc.internal.launch.patch.MinecraftPatch;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
@@ -20,7 +20,7 @@ public class LegacyServerEntrypointPatch implements MinecraftPatch {
                 for (AbstractInsnNode insnNode : methodNode.instructions) {
                     if (insnNode instanceof MethodInsnNode methodInsnNode) {
                         if (isPlayerList(methodInsnNode)) {
-                            methodNode.instructions.insert(insnNode, createHook(MinecraftCommon.class, "load", "()V"));
+                            methodNode.instructions.insert(insnNode, createHook(LoaderInternal.class, "load", "()V"));
                             break;
                         }
                     }

@@ -1,6 +1,6 @@
 package org.bookmc.internal.launch.patch.client;
 
-import org.bookmc.internal.MinecraftCommon;
+import org.bookmc.internal.LoaderInternal;
 import org.bookmc.internal.launch.patch.MinecraftPatch;
 import org.bookmc.internal.util.version.MinecraftVersionLookup;
 import org.objectweb.asm.tree.*;
@@ -20,21 +20,21 @@ public class EntrypointPatch implements MinecraftPatch {
                         if (isSetPhase(methodInsnNode)) {
                             if (methodInsnNode.getPrevious() instanceof LdcInsnNode previous) {
                                 if (previous.cst.equals("Startup")) {
-                                    methodNode.instructions.insert(methodInsnNode, createHook(MinecraftCommon.class, "load", "()V"));
+                                    methodNode.instructions.insert(methodInsnNode, createHook(LoaderInternal.class, "load", "()V"));
                                     break;
                                 }
                             }
                         }
                     }
                 }
+                break;
             }
         }
     }
 
     private boolean isInit(String name) {
         if (MinecraftVersionLookup.find().id().startsWith("1.14")) {
-            return name.equals("init") ||
-                name.equals("au");
+            return name.equals("init") || name.equals("au");
         } else {
             return name.equals("<init>");
         }

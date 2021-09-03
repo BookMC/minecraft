@@ -1,6 +1,6 @@
 package org.bookmc.internal.launch.patch.client.legacy;
 
-import org.bookmc.internal.MinecraftCommon;
+import org.bookmc.internal.LoaderInternal;
 import org.bookmc.internal.launch.patch.MinecraftPatch;
 import org.objectweb.asm.tree.*;
 
@@ -19,13 +19,14 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
                         if (isSetPhase(methodInsnNode)) {
                             if (methodInsnNode.getPrevious() instanceof LdcInsnNode previous) {
                                 if (previous.cst.equals("Startup")) {
-                                    methodNode.instructions.insert(methodInsnNode, createHook(MinecraftCommon.class, "load", "()V"));
+                                    methodNode.instructions.insert(methodInsnNode, createHook(LoaderInternal.class, "load", "()V"));
                                     break;
                                 }
                             }
                         }
                     }
                 }
+                break;
             }
         }
     }

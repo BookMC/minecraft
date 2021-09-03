@@ -22,7 +22,7 @@ public class YarnUtils {
 
     public static boolean isYarnMapped() {
         try (InputStream stream = YarnUtils.class.getResourceAsStream(toResourceLocation("net.minecraft.MinecraftVersion"))) {
-           return stream != null;
+            return stream != null;
         } catch (IOException ignored) {
 
         }

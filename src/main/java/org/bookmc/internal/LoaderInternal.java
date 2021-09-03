@@ -8,9 +8,7 @@ import org.bookmc.loader.impl.launch.Launcher;
 
 import java.util.List;
 
-public class MinecraftCommon {
-    public static MinecraftCommon INSTANCE;
-
+public class LoaderInternal {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static void load() {
@@ -32,9 +30,5 @@ public class MinecraftCommon {
         }
 
         Loader.load(Launcher.getEnvironment());
-    }
-
-    public static class None extends MinecraftCommon {
-
     }
 }
