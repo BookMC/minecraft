@@ -13,7 +13,7 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
     @Override
     public void transform(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-            if (methodNode.name.equals("startGame") || methodNode.name.equals("am")) {
+            if (isInit(methodNode)) {
                 for (AbstractInsnNode insnNode : methodNode.instructions) {
                     if (insnNode instanceof MethodInsnNode methodInsnNode) {
                         if (methodInsnNode.name.equals("checkGLError") || methodInsnNode.name.equals("b")) {
@@ -28,5 +28,9 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
                 }
             }
         }
+    }
+
+    private boolean isInit(MethodNode methodNode) {
+        return methodNode.name.equals("startGame") || methodNode.name.equals("am") || methodNode.name.equals("init") || methodNode.name.equals("an");
     }
 }
