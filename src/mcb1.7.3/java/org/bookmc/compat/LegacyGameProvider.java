@@ -1,6 +1,6 @@
 package org.bookmc.compat;
 
-import org.bookmc.loader.impl.launch.Launcher;
+import org.bookmc.internal.util.version.MinecraftVersionLookup;
 import org.bookmc.loader.impl.launch.provider.ArgumentHandler;
 import org.bookmc.loader.impl.launch.provider.GameProvider;
 
@@ -23,7 +23,7 @@ public class LegacyGameProvider implements GameProvider {
     @Override
     public String getLaunchedVersion() {
         if (version == null) {
-            version = handler.get("version").orElseThrow(() -> new IllegalStateException("The game was not loaded correctly, could not detect version"));
+            version = MinecraftVersionLookup.find().id();
         }
 
         return version;
@@ -49,6 +49,7 @@ public class LegacyGameProvider implements GameProvider {
 
     @Override
     public String getLaunchTarget() {
+        // If you're not a client then there is a problem
         return "net.minecraft.client.MinecraftClient";
     }
 }

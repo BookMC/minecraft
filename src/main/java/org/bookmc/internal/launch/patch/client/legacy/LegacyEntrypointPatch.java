@@ -31,10 +31,20 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
     }
 
     private boolean isInit(MethodNode methodNode) {
-        return methodNode.name.equals("startGame") || methodNode.name.equals("am") || methodNode.name.equals("init") || methodNode.name.equals("an");
+        return methodNode.name.equals("startGame") ||
+            methodNode.name.equals("am") ||
+            methodNode.name.equals("init") ||
+            methodNode.name.equals("an") ||
+            methodNode.name.equals("launch") ||
+            methodNode.name.equals("a");
     }
 
     private boolean isSetPhase(MethodInsnNode methodInsnNode) {
-        return methodInsnNode.name.equals("checkGLError") || methodInsnNode.name.equals("b") || methodInsnNode.name.equals("setRenderPhase") || methodInsnNode.name.equals("a");
+        return methodInsnNode.name.equals("checkGLError") ||
+            methodInsnNode.name.equals("b") ||
+            methodInsnNode.name.equals("setRenderPhase") ||
+            methodInsnNode.name.equals("a") ||
+            methodInsnNode.name.equals("pushPhase") ||
+            methodInsnNode.name.equals("c");
     }
 }
