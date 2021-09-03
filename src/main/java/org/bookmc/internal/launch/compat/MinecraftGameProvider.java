@@ -1,12 +1,15 @@
-package org.bookmc.compat;
+package org.bookmc.internal.launch.compat;
 
-import org.bookmc.internal.util.version.MinecraftVersionLookup;
+import org.bookmc.loader.api.vessel.environment.Environment;
+import org.bookmc.loader.impl.launch.Launcher;
 import org.bookmc.loader.impl.launch.provider.ArgumentHandler;
 import org.bookmc.loader.impl.launch.provider.GameProvider;
+import org.bookmc.internal.util.version.MinecraftVersionLookup;
+import org.bookmc.internal.util.version.api.asm.yarn.utils.YarnUtils;
 
 import java.io.File;
 
-public class LegacyGameProvider implements GameProvider {
+public class MinecraftGameProvider implements GameProvider {
     private ArgumentHandler handler;
 
     private String version;
@@ -49,7 +52,6 @@ public class LegacyGameProvider implements GameProvider {
 
     @Override
     public String getLaunchTarget() {
-        // If you're not a client then there is a problem
-        return "net.minecraft.client.MinecraftClient";
+        return Launcher.getEnvironment() == Environment.CLIENT ? "net.minecraft.client.main.Main" : (YarnUtils.isYarnMapped() ? "net.minecraft.server.MinecraftServer" : "net.minecraft.server.Main");
     }
 }

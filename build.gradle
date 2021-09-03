@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "maven-publish"
     id "org.bookmc.buildtools" version "0.3.8+build.29"
-    id "me.dreamhopping.pml.gradle" version "3.11.3+build.24"
+    id "me.dreamhopping.pml.gradle" version "3.12.0+build.25"
     id "org.bookmc.annotation-processor-configuration" version "0.2.1+build.6"
 }
 
@@ -83,7 +83,12 @@ dependencies {
     compileOnly "org.apache.logging.log4j:log4j-api:2.0-beta9"
     compileOnly "org.apache.logging.log4j:log4j-core:2.0-beta9"
 
+    // Minecraft B1.7.3 doesn't include GSON or Log4J and we use them
+    // in hopes the game already has it available so we must embed it
+    // ourselves
     mcb173Include "com.google.code.gson:gson:2.8.8"
+    mcb173Include "org.apache.logging.log4j:log4j-api:2.0-beta9"
+    mcb173Include "org.apache.logging.log4j:log4j-core:2.0-beta9"
 }
 
 sourcesJar.enabled = false
