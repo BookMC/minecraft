@@ -1,10 +1,12 @@
 package org.bookmc.internal.asm.patching;
 
 import org.bookmc.internal.launch.patch.MinecraftPatch;
+import org.bookmc.internal.launch.patch.client.EntrypointPatch;
 import org.bookmc.internal.launch.patch.client.common.ClientBrandRetrieverPatch;
 import org.bookmc.internal.launch.patch.client.legacy.LegacyEntrypointPatch;
+import org.bookmc.internal.launch.patch.server.ServerEntrypointPatch;
 import org.bookmc.internal.launch.patch.server.legacy.LegacyServerEntrypointPatch;
-import org.bookmc.internal.launch.patch.server.legacy.ServerBrandingPatch;
+import org.bookmc.internal.launch.patch.server.common.ServerBrandingPatch;
 import org.bookmc.loader.api.launch.transform.QuiltTransformer;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.bookmc.loader.libs.guava.common.collect.ArrayListMultimap;
@@ -28,9 +30,11 @@ public class PatchSystemTransformer implements QuiltTransformer {
         // Client
         registerPatch(new ClientBrandRetrieverPatch());
         registerPatch(new LegacyEntrypointPatch());
+        registerPatch(new EntrypointPatch());
 
         // Server
         registerPatch(new LegacyServerEntrypointPatch());
+        registerPatch(new ServerEntrypointPatch());
         registerPatch(new ServerBrandingPatch());
     }
 

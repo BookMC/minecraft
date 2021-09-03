@@ -52,6 +52,6 @@ public class MinecraftGameProvider implements GameProvider {
 
     @Override
     public String getLaunchTarget() {
-        return Launcher.getEnvironment() == Environment.CLIENT ? "net.minecraft.client.main.Main" : (YarnUtils.isYarnMapped() ? "net.minecraft.server.Main" : "net.minecraft.server.MinecraftServer");
+        return Launcher.getEnvironment() == Environment.CLIENT ? "net.minecraft.client.main.Main" : (YarnUtils.isYarnMapped() ? "net.minecraft.server.MinecraftServer" : "net.minecraft.server.Main");
     }
 }

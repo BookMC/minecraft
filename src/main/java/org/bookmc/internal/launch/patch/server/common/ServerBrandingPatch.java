@@ -1,4 +1,4 @@
-package org.bookmc.internal.launch.patch.server.legacy;
+package org.bookmc.internal.launch.patch.server.common;
 
 import org.bookmc.internal.launch.patch.MinecraftPatch;
 import org.bookmc.internal.util.constants.Constants;
@@ -19,7 +19,6 @@ public class ServerBrandingPatch implements MinecraftPatch {
         for (MethodNode methodNode : classNode.methods) {
             if (methodNode.name.equals("getServerModName")) {
                 methodNode.instructions.clear();
-
                 methodNode.instructions.add(new LdcInsnNode(Constants.GAME_BRANDING));
                 methodNode.instructions.add(new InsnNode(Opcodes.ARETURN));
                 break;
