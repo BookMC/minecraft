@@ -71,7 +71,7 @@ configurations {
 
 dependencies {
     // To be downloaded via the launcher itself
-    api("org.bookmc:book-loader:0.15.0+${local ? "local" : "build.24"}") {
+    api("org.bookmc:book-loader:0.16.0+${local ? "local" : "build.25"}") {
         exclude module: "sponge-mixin"
     }
 
