@@ -7,8 +7,8 @@ import org.objectweb.asm.tree.*;
 
 public class EntrypointPatch implements MinecraftPatch {
     @Override
-    public String getTargetClass() {
-        return "net.minecraft.client.MinecraftClient";
+    public String[] getTargetClasses() {
+        return new String[]{"net.minecraft.client.MinecraftClient", "cyc", "dbn", "djz", "dvp"};
     }
 
     @Override

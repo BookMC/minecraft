@@ -9,8 +9,8 @@ import org.objectweb.asm.tree.MethodNode;
 
 public class LegacyServerEntrypointPatch implements MinecraftPatch {
     @Override
-    public String getTargetClass() {
-        return "net.minecraft.server.dedicated.DedicatedServer";
+    public String[] getTargetClasses() {
+        return new String[]{"net.minecraft.server.dedicated.DedicatedServer", "ko", "lb", "ld", "so"};
     }
 
     @Override

@@ -9,8 +9,8 @@ import org.objectweb.asm.tree.MethodNode;
 
 public class ServerEntrypointPatch implements MinecraftPatch {
     @Override
-    public String getTargetClass() {
-        return "net.minecraft.server.dedicated.MinecraftDedicatedServer";
+    public String[] getTargetClasses() {
+        return new String[]{"net.minecraft.server.dedicated.MinecraftDedicatedServer", "aas", "zg", "wd", "uk"};
     }
 
     @Override

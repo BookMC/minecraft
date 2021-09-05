@@ -77,6 +77,8 @@ public class PatchSystemTransformer implements QuiltTransformer {
     }
 
     private void registerPatch(MinecraftPatch patch) {
-        patches.put(patch.getTargetClass(), patch);
+        for (String target : patch.getTargetClasses()) {
+            patches.put(target, patch);
+        }
     }
 }

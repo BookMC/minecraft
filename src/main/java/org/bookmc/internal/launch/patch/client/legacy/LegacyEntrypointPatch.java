@@ -6,8 +6,8 @@ import org.objectweb.asm.tree.*;
 
 public class LegacyEntrypointPatch implements MinecraftPatch {
     @Override
-    public String getTargetClass() {
-        return "net.minecraft.client.Minecraft";
+    public String[] getTargetClasses() {
+        return new String[]{"net.minecraft.client.Minecraft", "ave", "bcd", "bcx", "cft"};
     }
 
     @Override

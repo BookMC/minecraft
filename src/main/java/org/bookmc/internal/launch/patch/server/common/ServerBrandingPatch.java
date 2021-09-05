@@ -10,8 +10,8 @@ import org.objectweb.asm.tree.MethodNode;
 
 public class ServerBrandingPatch implements MinecraftPatch {
     @Override
-    public String getTargetClass() {
-        return "net.minecraft.server.MinecraftServer";
+    public String[] getTargetClasses() {
+        return new String[]{"net.minecraft.server.MinecraftServer"};
     }
 
     @Override

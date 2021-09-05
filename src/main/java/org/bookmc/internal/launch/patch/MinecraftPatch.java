@@ -5,7 +5,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 
 public interface MinecraftPatch {
-    String getTargetClass();
+    String[] getTargetClasses();
 
     void transform(ClassNode classNode);
 

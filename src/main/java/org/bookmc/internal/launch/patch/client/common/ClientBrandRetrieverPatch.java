@@ -10,8 +10,8 @@ import org.objectweb.asm.tree.MethodNode;
 
 public class ClientBrandRetrieverPatch implements MinecraftPatch {
     @Override
-    public String getTargetClass() {
-        return "net.minecraft.client.ClientBrandRetriever";
+    public String[] getTargetClasses() {
+        return new String[]{"net.minecraft.client.ClientBrandRetriever"};
     }
 
     @Override
