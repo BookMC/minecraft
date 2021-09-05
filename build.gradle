@@ -25,7 +25,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.16.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.17.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
 
 repositories {
     mavenCentral()
@@ -71,7 +71,7 @@ configurations {
 
 dependencies {
     // To be downloaded via the launcher itself
-    api("org.bookmc:book-loader:0.17.0+${local ? "local" : "build.26"}") {
+    api("org.bookmc:book-loader:0.18.0+${local ? "local" : "build.27"}") {
         exclude module: "sponge-mixin"
     }
 

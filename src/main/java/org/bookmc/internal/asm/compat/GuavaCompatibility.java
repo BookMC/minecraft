@@ -1,6 +1,6 @@
 package org.bookmc.internal.asm.compat;
 
-import org.bookmc.loader.api.launch.transform.QuiltTransformer;
+import org.bookmc.external.transformer.QuiltTransformer;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
