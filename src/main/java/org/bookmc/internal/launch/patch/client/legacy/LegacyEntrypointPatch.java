@@ -42,7 +42,7 @@ public class LegacyEntrypointPatch implements MinecraftPatch {
 
     private boolean isSetPhase(MethodInsnNode methodInsnNode) {
         return methodInsnNode.name.equals("checkGLError") ||
-            methodInsnNode.name.equals("b") ||
+            methodInsnNode.name.equals("b") && methodInsnNode.owner.equals("ave") ||
             methodInsnNode.name.equals("setRenderPhase") ||
             methodInsnNode.name.equals("a") ||
             methodInsnNode.name.equals("pushPhase") ||
