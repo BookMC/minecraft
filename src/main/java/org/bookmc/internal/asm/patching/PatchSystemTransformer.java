@@ -1,6 +1,5 @@
 package org.bookmc.internal.asm.patching;
 
-import org.bookmc.external.transformer.QuiltTransformer;
 import org.bookmc.internal.launch.patch.MinecraftPatch;
 import org.bookmc.internal.launch.patch.client.EntrypointPatch;
 import org.bookmc.internal.launch.patch.client.common.ClientBrandRetrieverPatch;
@@ -9,6 +8,7 @@ import org.bookmc.internal.launch.patch.server.ServerEntrypointPatch;
 import org.bookmc.internal.launch.patch.server.common.ServerBrandingPatch;
 import org.bookmc.internal.launch.patch.server.legacy.LegacyServerEntrypointPatch;
 import org.bookmc.internal.util.obfuscation.BookObfuscationUtil;
+import org.bookmc.loader.api.launch.transform.QuiltTransformer;
 import org.bookmc.loader.impl.launch.Launcher;
 import org.bookmc.loader.libs.guava.common.collect.ArrayListMultimap;
 import org.objectweb.asm.ClassReader;

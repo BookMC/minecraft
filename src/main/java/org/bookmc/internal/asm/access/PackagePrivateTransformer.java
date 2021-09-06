@@ -1,6 +1,6 @@
 package org.bookmc.internal.asm.access;
 
-import org.bookmc.external.transformer.QuiltTransformer;
+import org.bookmc.loader.api.launch.transform.QuiltTransformer;
 import org.objectweb.asm.*;
 
 public class PackagePrivateTransformer implements QuiltTransformer {
