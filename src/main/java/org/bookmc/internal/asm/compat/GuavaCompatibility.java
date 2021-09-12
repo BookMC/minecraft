@@ -1,7 +1,7 @@
 package org.bookmc.internal.asm.compat;
 
-import org.bookmc.loader.api.launch.transform.QuiltTransformer;
-import org.bookmc.loader.impl.launch.Launcher;
+import org.bookmc.loader.api.transformer.QuiltTransformer;
+import org.bookmc.loader.impl.launch.BookLauncher;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -10,7 +10,7 @@ import org.objectweb.asm.tree.*;
 public class GuavaCompatibility implements QuiltTransformer {
     @Override
     public byte[] transform(String name, byte[] clazz) {
-        if (Launcher.isDevelopment()) {
+        if (BookLauncher.isDevelopment()) {
             ClassNode node = new ClassNode();
             ClassReader reader = new ClassReader(clazz);
             reader.accept(node, 0);

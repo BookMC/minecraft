@@ -1,6 +1,6 @@
 package org.bookmc.internal.asm.access;
 
-import org.bookmc.loader.api.launch.transform.QuiltTransformer;
+import org.bookmc.loader.api.transformer.QuiltTransformer;
 import org.objectweb.asm.*;
 
 public class PackagePrivateTransformer implements QuiltTransformer {
@@ -38,7 +38,7 @@ public class PackagePrivateTransformer implements QuiltTransformer {
         }
 
         private int transformAccess(int access) {
-            return ((access & 0x7) != Opcodes.ACC_PRIVATE) ? (access & (~0x7)) | Opcodes.ACC_PUBLIC : access;
+            return (access & 0x7) != Opcodes.ACC_PRIVATE ? (access & (~0x7)) | Opcodes.ACC_PUBLIC : access;
         }
     }
 }

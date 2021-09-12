@@ -2,10 +2,10 @@ package org.bookmc.internal.launch.compat;
 
 import org.bookmc.internal.util.version.MinecraftVersionLookup;
 import org.bookmc.internal.util.version.api.asm.yarn.utils.YarnUtils;
+import org.bookmc.loader.api.provider.GameProvider;
 import org.bookmc.loader.api.vessel.environment.Environment;
-import org.bookmc.loader.impl.launch.Launcher;
-import org.bookmc.loader.impl.launch.provider.ArgumentHandler;
-import org.bookmc.loader.impl.launch.provider.GameProvider;
+import org.bookmc.loader.impl.launch.BookLauncher;
+import org.bookmc.loader.impl.provider.ArgumentHandler;
 
 import java.io.File;
 
@@ -52,6 +52,6 @@ public class MinecraftGameProvider implements GameProvider {
 
     @Override
     public String getLaunchTarget() {
-        return Launcher.getEnvironment() == Environment.CLIENT ? "net.minecraft.client.main.Main" : (YarnUtils.isYarnMapped() ? "net.minecraft.server.MinecraftServer" : "net.minecraft.server.Main");
+        return BookLauncher.getEnvironment() == Environment.CLIENT ? "net.minecraft.client.main.Main" : (YarnUtils.isYarnMapped() ? "net.minecraft.server.MinecraftServer" : "net.minecraft.server.Main");
     }
 }

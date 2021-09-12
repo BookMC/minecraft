@@ -1,8 +1,8 @@
 package org.bookmc.compat;
 
 import org.bookmc.internal.util.version.MinecraftVersionLookup;
-import org.bookmc.loader.impl.launch.provider.ArgumentHandler;
-import org.bookmc.loader.impl.launch.provider.GameProvider;
+import org.bookmc.loader.api.provider.GameProvider;
+import org.bookmc.loader.impl.provider.ArgumentHandler;
 
 import java.io.File;
 

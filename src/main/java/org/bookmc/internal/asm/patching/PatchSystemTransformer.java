@@ -8,8 +8,8 @@ import org.bookmc.internal.launch.patch.server.ServerEntrypointPatch;
 import org.bookmc.internal.launch.patch.server.common.ServerBrandingPatch;
 import org.bookmc.internal.launch.patch.server.legacy.LegacyServerEntrypointPatch;
 import org.bookmc.internal.util.obfuscation.BookObfuscationUtil;
-import org.bookmc.loader.api.launch.transform.QuiltTransformer;
-import org.bookmc.loader.impl.launch.Launcher;
+import org.bookmc.loader.api.transformer.QuiltTransformer;
+import org.bookmc.loader.impl.launch.BookLauncher;
 import org.bookmc.loader.libs.guava.common.collect.ArrayListMultimap;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
@@ -23,8 +23,8 @@ import java.util.List;
 public class PatchSystemTransformer implements QuiltTransformer {
     private final ArrayListMultimap<String, MinecraftPatch> patches = ArrayListMultimap.create();
 
-    private final boolean export = Boolean.parseBoolean(System.getProperty("book.patch.export", Launcher.isDevelopment() ? "true" : "false"));
-    private final File outputFolder = new File(Launcher.getGameProvider().getGameDirectory(), System.getProperty("book.patch.export.directory", ".book-out/classes"));
+    private final boolean export = Boolean.parseBoolean(System.getProperty("book.patch.export", BookLauncher.isDevelopment() ? "true" : "false"));
+    private final File outputFolder = new File(BookLauncher.getGameProvider().getGameDirectory(), System.getProperty("book.patch.export.directory", ".book-out/classes"));
 
     public PatchSystemTransformer() {
         // Client
