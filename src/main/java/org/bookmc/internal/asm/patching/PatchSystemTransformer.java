@@ -8,23 +8,16 @@ import org.bookmc.internal.launch.patch.server.ServerEntrypointPatch;
 import org.bookmc.internal.launch.patch.server.common.ServerBrandingPatch;
 import org.bookmc.internal.launch.patch.server.legacy.LegacyServerEntrypointPatch;
 import org.bookmc.internal.util.obfuscation.BookObfuscationUtil;
-import org.bookmc.loader.api.transformer.QuiltTransformer;
-import org.bookmc.loader.impl.launch.BookLauncher;
+import org.bookmc.loader.api.classloader.transformers.BookTransformer;
 import org.bookmc.loader.libs.guava.common.collect.ArrayListMultimap;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
-public class PatchSystemTransformer implements QuiltTransformer {
+public class PatchSystemTransformer implements BookTransformer {
     private final ArrayListMultimap<String, MinecraftPatch> patches = ArrayListMultimap.create();
-
-    private final boolean export = Boolean.parseBoolean(System.getProperty("book.patch.export", BookLauncher.isDevelopment() ? "true" : "false"));
-    private final File outputFolder = new File(BookLauncher.getGameProvider().getGameDirectory(), System.getProperty("book.patch.export.directory", ".book-out/classes"));
 
     public PatchSystemTransformer() {
         // Client
@@ -55,25 +48,8 @@ public class PatchSystemTransformer implements QuiltTransformer {
 
         ClassWriter writer = new ClassWriter(0);
         classNode.accept(writer);
-        byte[] bytes = writer.toByteArray();
-        if (export) {
-            File f = new File(outputFolder, name.replace(".", "/").concat(".class"));
-            File parent = f.getParentFile();
-            if (parent != null) {
-                parent.mkdirs();
-            }
-            try {
-                f.delete();
-                f.createNewFile();
-                try (FileOutputStream fos = new FileOutputStream(f)) {
-                    fos.write(bytes, 0, bytes.length);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        return writer.toByteArray();
 
-        return bytes;
     }
 
     private void registerPatch(MinecraftPatch patch) {

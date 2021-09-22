@@ -1,16 +1,22 @@
 package org.bookmc.internal.asm.compat;
 
-import org.bookmc.loader.api.transformer.QuiltTransformer;
-import org.bookmc.loader.impl.launch.BookLauncher;
+import org.bookmc.internal.util.Launcher;
+import org.bookmc.loader.api.classloader.transformers.BookTransformer;
+import org.bookmc.loader.api.loader.BookLoaderBase;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
-public class GuavaCompatibility implements QuiltTransformer {
+public class GuavaCompatibility implements BookTransformer {
+    public GuavaCompatibility() {
+        BookLoaderBase.INSTANCE.getGlobalClassLoader()
+            .addClassLoaderExclusion("org.bookmc.internal.");
+    }
+
     @Override
     public byte[] transform(String name, byte[] clazz) {
-        if (BookLauncher.isDevelopment()) {
+        if (Launcher.isDevelopment()) {
             ClassNode node = new ClassNode();
             ClassReader reader = new ClassReader(clazz);
             reader.accept(node, 0);
