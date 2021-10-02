@@ -5,7 +5,7 @@ import org.objectweb.asm.*;
 
 public class PackagePrivateTransformer implements BookTransformer {
     @Override
-    public byte[] transform(String name, byte[] clazz) {
+    public byte[] proposeTransformation(String name, byte[] clazz) {
         ClassReader reader = new ClassReader(clazz);
         ClassWriter writer = new ClassWriter(0);
         reader.accept(new PackagePrivateVisitor(writer), 0);

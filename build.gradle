@@ -16,28 +16,19 @@ java {
 }
 
 ext {
-    def env = System.getenv()
-
-    devLocal = false // Change this to true if you want local
-    local = env.GITHUB_ACTIONS ? false : devLocal
-    buildNumber = env.BUILD_NUMBER
     branch = "git rev-parse --abbrev-ref HEAD".execute().text.trim()
 }
 
 group "org.bookmc"
-version "0.22.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}+${buildNumber ? "build.$buildNumber" : "local"}"
+version "0.23.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}"
 
 repositories {
     mavenCentral()
     maven {
-        url "https://maven.bookmc.org/"
+        url "https://maven.bookmc.org/releases/"
     }
     maven {
         url "https://repo.spongepowered.org/repository/maven-public/"
-    }
-
-    if (local) {
-        mavenLocal()
     }
 }
 
@@ -45,21 +36,21 @@ minecraft {
     separateVersionJars()
 
     target "1.18_experimental-snapshot-5",
-            "1.18_experimental-snapshot-4",
-            "1.18_experimental-snapshot-3",
-            "1.18_experimental-snapshot-2",
-            "1.18_experimental-snapshot-1",
-            "1.17.1",
-            "1.16.5",
-            "1.15.2",
-            "1.14.4",
-            "1.13.2",
-            "1.12.2",
-            "1.11.2",
-            "1.10.2",
-            "1.9.4",
-            "1.8.9",
-            "b1.7.3"
+        "1.18_experimental-snapshot-4",
+        "1.18_experimental-snapshot-3",
+        "1.18_experimental-snapshot-2",
+        "1.18_experimental-snapshot-1",
+        "1.17.1",
+        "1.16.5",
+        "1.15.2",
+        "1.14.4",
+        "1.13.2",
+        "1.12.2",
+        "1.11.2",
+        "1.10.2",
+        "1.9.4",
+        "1.8.9",
+        "b1.7.3"
 }
 
 configurations {
@@ -72,7 +63,7 @@ configurations {
 
 dependencies {
     // To be downloaded via the launcher itself
-    api("org.bookmc:book-loader:1.0.0-1.x-dev-rewrite+${local ? "local" : "build.33"}") {
+    api("org.bookmc:book-loader:1.0.0-rc2") {
         exclude module: "sponge-mixin"
     }
 
@@ -120,19 +111,19 @@ publishing {
         maven {
             def env = System.getenv()
 
-            boolean isEnvVarsAvailable = env.containsKey("MAVEN_USER") && env.containsKey("MAVEN_PASSWORD")
+            boolean login = env.containsKey("MAVEN_USER") && env.containsKey("MAVEN_PASSWORD")
 
-            name local || !isEnvVarsAvailable ? "RepositoryFolder" : "BookMC"
+            name = !login ? "RepositoryFolder" : "BookMC"
 
 
-            if (isEnvVarsAvailable) {
+            if (login) {
                 credentials {
                     username env.get("MAVEN_USER")
                     password env.get("MAVEN_PASSWORD")
                 }
             }
 
-            url = local || !isEnvVarsAvailable ? "$buildDir/repository" : "https://maven.bookmc.org/releases/"
+            url = !login ? "$buildDir/repository" : "https://maven.bookmc.org/releases/"
         }
     }
 

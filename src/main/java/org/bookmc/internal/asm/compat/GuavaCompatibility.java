@@ -15,7 +15,7 @@ public class GuavaCompatibility implements BookTransformer {
     }
 
     @Override
-    public byte[] transform(String name, byte[] clazz) {
+    public byte[] proposeTransformation(String name, byte[] clazz) {
         if (Launcher.isDevelopment()) {
             ClassNode node = new ClassNode();
             ClassReader reader = new ClassReader(clazz);

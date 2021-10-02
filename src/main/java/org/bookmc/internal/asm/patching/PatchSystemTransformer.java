@@ -32,7 +32,7 @@ public class PatchSystemTransformer implements BookTransformer {
     }
 
     @Override
-    public byte[] transform(String name, byte[] clazz) {
+    public byte[] proposeTransformation(String name, byte[] clazz) {
         String clazzName = BookObfuscationUtil.getMappedClass(name);
         List<MinecraftPatch> minecraftPatches = patches.get(clazzName);
         if (minecraftPatches.isEmpty()) return clazz;
