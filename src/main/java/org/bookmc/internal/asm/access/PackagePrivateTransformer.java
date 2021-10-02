@@ -1,11 +1,11 @@
 package org.bookmc.internal.asm.access;
 
-import org.bookmc.loader.api.transformer.QuiltTransformer;
+import org.bookmc.loader.api.classloader.transformers.BookTransformer;
 import org.objectweb.asm.*;
 
-public class PackagePrivateTransformer implements QuiltTransformer {
+public class PackagePrivateTransformer implements BookTransformer {
     @Override
-    public byte[] transform(String name, byte[] clazz) {
+    public byte[] proposeTransformation(String name, byte[] clazz) {
         ClassReader reader = new ClassReader(clazz);
         ClassWriter writer = new ClassWriter(0);
         reader.accept(new PackagePrivateVisitor(writer), 0);

@@ -2,6 +2,7 @@
   "name": "book-minecraft",
   "id": "book-minecraft",
   "version": "0.7.0",
+  "schemaVersion": 0,
   "description": "Hooks directly into Minecraft to kick-start the book-loader loading process.",
   "authors": {
     "BookMC": {
@@ -16,9 +17,11 @@
   "depends": {
     "book-loader": "*"
   },
-  "asm": [
-    "org.bookmc.internal.asm.access.PackagePrivateTransformer",
-    "org.bookmc.internal.asm.compat.GuavaCompatibility",
-    "org.bookmc.internal.asm.patching.PatchSystemTransformer"
-  ]
+  "entrypoint": {
+    "transformer": [
+      "org.bookmc.internal.asm.access.PackagePrivateTransformer",
+      "org.bookmc.internal.asm.compat.GuavaCompatibility",
+      "org.bookmc.internal.asm.patching.PatchSystemTransformer"
+    ]
+  }
 }
