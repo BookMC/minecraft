@@ -63,7 +63,7 @@ configurations {
 
 dependencies {
     // To be downloaded via the launcher itself
-    api("org.bookmc:book-loader:1.0.0-rc2") {
+    implementation("org.bookmc:book-loader:1.0.0") {
         exclude module: "sponge-mixin"
     }
 
