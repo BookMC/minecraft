@@ -20,7 +20,7 @@ ext {
 }
 
 group "org.bookmc"
-version "0.23.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}"
+version "0.22.0${branch != "main" && !branch.isEmpty() ? "-$branch" : ""}"
 
 repositories {
     mavenCentral()
