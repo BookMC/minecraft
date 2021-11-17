@@ -35,7 +35,11 @@ repositories {
 minecraft {
     separateVersionJars()
 
-    target "1.18_experimental-snapshot-5",
+    target "1.18-pre4",
+        "1.18-pre3",
+        "1.18-pre2",
+        "1.18-pre1"
+        "1.18_experimental-snapshot-5",
         "1.18_experimental-snapshot-4",
         "1.18_experimental-snapshot-3",
         "1.18_experimental-snapshot-2",
